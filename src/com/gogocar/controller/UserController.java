@@ -38,7 +38,7 @@ public class UserController {
 			session.setAttribute("user", user);
 			return "index";
 		}else {
-			model.addAttribute("msg", "パスワードが間違っている、もう一度入力してください");
+			model.addAttribute("msg", "パスワードが間違っている、もう一度入力してください!");
 			return "Login";
 		}
 	}
