@@ -27,7 +27,7 @@ public class AdminController {
 	public String adminLogin(HttpServletRequest request,HttpSession session,Model model) {
 		Admin admin = adminService.Logincheck(request.getParameter("username"), request.getParameter("password"));
 		if (admin!=null) {
-			System.out.println();
+			System.out.println("");
 			session.setAttribute("admin", admin);
 			return "admin/index";
 		}else {
