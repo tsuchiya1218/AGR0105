@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" 
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/plugins.css">
     <link rel="stylesheet" href="css/main.css">
-        
+
     <link rel="stylesheet" href="css/themes.css">
     <script src="./component/js/JQuery2.1.4.js"></script>
     <script src="./component/plugins/layer/layer.js"></script>
@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
                     <i class="fa fa-power-off"></i>
                		 </a>
 				</c:if>
-              
+
             </div>
         </header>
         <section class="body">
@@ -48,22 +48,22 @@ pageEncoding="UTF-8"%>
                     <dl>
                         <dt><a href="controlpanel.jsp" target="rightiframe"><i class="fa fa-fw fa-tachometer"></i><span>控制面板</span></a></dt>
                     </dl>
-                    
-                    
-                    
+
+
+
                     <dl>
                         <dt><i class="fa fa-fw fa-image"></i> <span>車両管理</span></dt>
                         <dd>
                             <div class='li'>
-                                <a href="picture.html" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車両リスト</span></a>
+                                <a href="showcars" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車両リスト</span></a>
                             </div>
                             <div class='li'>
-                                <a href="picture_create.html" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車リスト追加</span></a>
+                                <a href="car_create.jsp" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車リスト追加</span></a>
                             </div>
                         </dd>
                     </dl>
-                  
-                    
+
+
 
                     <dl>
                         <dt><i class="fa fa-fw fa-users"></i> <span>会員管理</span></dt>
@@ -74,8 +74,8 @@ pageEncoding="UTF-8"%>
                         </dd>
                     </dl>
 
-             
-                 
+
+
                 </div>
             </div>
             <div class="right">

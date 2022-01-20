@@ -1,7 +1,8 @@
 package com.gogocar.dao;
 
-import com.gogocar.bean.User;
 import java.util.List;
+
+import com.gogocar.bean.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -11,7 +12,7 @@ public interface UserMapper {
     User selectByPrimaryKey(Integer id);
     
     User selectByUserName(String username);
-    
+
     List<User> selectAll();
     
     List<User> selectUsersByUserName(String username);

@@ -12,6 +12,9 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="regdate" jdbcType="VARCHAR" property="regdate" />
     <result column="credit" jdbcType="INTEGER" property="credit" />
+    <result column="emegname" jdbcType="VARCHAR" property="emegname" />
+    <result column="emegtel" jdbcType="VARCHAR" property="emegtel" />
+    <result column="expiredate" jdbcType="VARCHAR" property="expiredate" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
@@ -21,11 +24,13 @@
     insert into user (id, username, password, 
       drivelicense, birthday, tel, 
       email, address, regdate, 
-      credit)
+      credit, emegname, emegtel, 
+      expiredate)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{drivelicense,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{regdate,jdbcType=VARCHAR}, 
-      #{credit,jdbcType=INTEGER})
+      #{credit,jdbcType=INTEGER}, #{emegname,jdbcType=VARCHAR}, #{emegtel,jdbcType=VARCHAR}, 
+      #{expiredate,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.gogocar.bean.User">
     update user
@@ -37,30 +42,32 @@
       email = #{email,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       regdate = #{regdate,jdbcType=VARCHAR},
-      credit = #{credit,jdbcType=INTEGER}
+      credit = #{credit,jdbcType=INTEGER},
+      emegname = #{emegname,jdbcType=VARCHAR},
+      emegtel = #{emegtel,jdbcType=VARCHAR},
+      expiredate = #{expiredate,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, username, password, drivelicense, birthday, tel, email, address, regdate, 
-    credit
+    credit, emegname, emegtel, expiredate
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  
-  <select id="selectByUserName" parameterType="string" resultMap="BaseResultMap">
+   <select id="selectByUserName" parameterType="string" resultMap="BaseResultMap">
     select id, username, password, drivelicense, birthday, tel, email, address, regdate, 
-    credit
+    credit, emegname, emegtel, expiredate
     from user
     where username = #{username,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, username, password, drivelicense, birthday, tel, email, address, regdate, 
-    credit
+    credit, emegname, emegtel, expiredate
     from user
   </select>
-   <select id="selectUsersByUserName" parameterType="string" resultMap="BaseResultMap">
+  <select id="selectUsersByUserName" parameterType="string" resultMap="BaseResultMap">
     select id, username, password, drivelicense, birthday, tel, email, address, regdate, 
-    credit
+    credit, emegname, emegtel, expiredate
     from user
     where username like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
   </select>

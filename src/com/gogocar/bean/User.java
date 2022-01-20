@@ -20,11 +20,18 @@ public class User {
     private String regdate;
 
     private Integer credit;
-    
-    
 
+    private String emegname;
+
+    private String emegtel;
+
+    private String expiredate;
+
+    
+    
     public User(Integer id, String username, String password, String drivelicense, String birthday, String tel,
-			String email, String address, String regdate, Integer credit) {
+			String email, String address, String regdate, Integer credit, String emegname, String emegtel,
+			String expiredate) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -36,13 +43,16 @@ public class User {
 		this.address = address;
 		this.regdate = regdate;
 		this.credit = credit;
+		this.emegname = emegname;
+		this.emegtel = emegtel;
+		this.expiredate = expiredate;
 	}
     
     
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 
@@ -127,13 +137,38 @@ public class User {
         this.credit = credit;
     }
 
+    public String getEmegname() {
+        return emegname;
+    }
+
+    public void setEmegname(String emegname) {
+        this.emegname = emegname == null ? null : emegname.trim();
+    }
+
+    public String getEmegtel() {
+        return emegtel;
+    }
+
+    public void setEmegtel(String emegtel) {
+        this.emegtel = emegtel == null ? null : emegtel.trim();
+    }
+
+    public String getExpiredate() {
+        return expiredate;
+    }
+
+    public void setExpiredate(String expiredate) {
+        this.expiredate = expiredate == null ? null : expiredate.trim();
+    }
+
 
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", drivelicense=" + drivelicense
 				+ ", birthday=" + birthday + ", tel=" + tel + ", email=" + email + ", address=" + address + ", regdate="
-				+ regdate + ", credit=" + credit + "]";
+				+ regdate + ", credit=" + credit + ", emegname=" + emegname + ", emegtel=" + emegtel + ", expiredate="
+				+ expiredate + "]";
 	}
     
     

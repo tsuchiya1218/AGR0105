@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gogocar.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.gogocar.bean.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="car_id" jdbcType="INTEGER" property="carId" />
+    <result column="order_price" jdbcType="VARCHAR" property="orderPrice" />
+    <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gogocar.bean.Order">
+    insert into order (id, user_id, car_id, 
+      order_price, start_time, end_time, 
+      order_status)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{carId,jdbcType=INTEGER}, 
+      #{orderPrice,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gogocar.bean.Order">
+    update order
+    set user_id = #{userId,jdbcType=INTEGER},
+      car_id = #{carId,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, car_id, order_price, start_time, end_time, order_status
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, car_id, order_price, start_time, end_time, order_status
+    from order
+  </select>
+</mapper>

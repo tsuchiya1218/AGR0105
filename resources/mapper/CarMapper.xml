@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gogocar.dao.CarMapper">
+  <resultMap id="BaseResultMap" type="com.gogocar.bean.Car">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="carNo" jdbcType="VARCHAR" property="carno" />
+    <result column="brandname" jdbcType="VARCHAR" property="brandname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="addtime" jdbcType="VARCHAR" property="addtime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="info" jdbcType="LONGVARCHAR" property="info" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gogocar.bean.Car">
+    insert into car (id, carNo, brandname, 
+      image, color, addtime, 
+      status, price, info
+      )
+    values (#{id,jdbcType=INTEGER}, #{carno,jdbcType=VARCHAR}, #{brandname,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{info,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gogocar.bean.Car">
+    update car
+    set carNo = #{carno,jdbcType=VARCHAR},
+      brandname = #{brandname,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      info = #{info,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, carNo, brandname, image, color, addtime, status, price, info
+    from car
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectCarsByName" parameterType="string" resultMap="BaseResultMap">
+    select id, carNo, brandname, image, color, addtime, status, price, info
+    from car
+    where carNo like CONCAT('%',#{carno,jdbcType=VARCHAR},'%')
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, carNo, brandname, image, color, addtime, status, price, info
+    from car
+  </select>
+</mapper>

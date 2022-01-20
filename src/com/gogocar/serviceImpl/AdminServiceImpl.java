@@ -16,10 +16,10 @@ import com.gogocar.service.AdminService;
 
 @Service
 public class AdminServiceImpl implements AdminService{
-	
+
 	@Autowired
 	AdminMapper adminMapper;
-	
+
 	@Autowired
 	UserMapper userMapper;
 
@@ -29,19 +29,20 @@ public class AdminServiceImpl implements AdminService{
 		if (admin!=null&&admin.getPassword().equals(password)) {
 			return admin;
 		}
-		
+
 		return null;
 	}
 
 	public List<User> getAllUser() {
-		
+
 		List<User> userList = userMapper.selectAll();
+		List<User> emptyList=new ArrayList<User>();
 		// TODO Auto-generated method stub
 		if (!userList.isEmpty()) {
 			return userList;
 		}
-		
-		return null;
+
+		return emptyList;
 	}
 
 	@Override
@@ -54,8 +55,8 @@ public class AdminServiceImpl implements AdminService{
 			List<User> emptyList = new ArrayList<User>();
 			return emptyList;
 		}
-		
-		
+
+
 	}
 
 }
