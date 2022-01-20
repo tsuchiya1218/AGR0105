@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>会員情報一覧</title>
     <script src="./component/js/JQuery2.1.4.js"></script>
     <link rel="stylesheet" href="./component/style/components.css">
     <script src="./component/js/bootstrap.min.js"></script>
@@ -60,8 +60,15 @@ pageEncoding="UTF-8"%>
                         <th class="text-center" width="50"><input type="checkbox" id="check5-all" name="check5-all"></th>
                         <th class="text-center">ID</th>
                         <th>ユーザー名</th>
+  						<th>生年月日</th>
+  						<th>免許番号</th>
+  						<th>期限</th>
+  						<th>電話番号</th>
                         <th>Email</th>
                         <th>アドレス</th>
+                        <th>緊急連絡人</th>
+                        <th>緊急連絡先</th>
+                        <th>登録日</th>
                         <th class="text-center" width="85"><i class="fa fa-bolt"></i> 操作</th>
                     </tr>
                 </thead>
@@ -72,8 +79,15 @@ pageEncoding="UTF-8"%>
                         <td class="text-center"><input type="checkbox" id="check5-td1" name="check5-td1"></td>
                         <td class="cell-small text-center">${ulist.id} </td>
                         <td>${ulist.username }</td>
+                        <td>${ulist.birthday }</td>
+                        <td>${ulist.drivelicense }</td>
+                        <td>${ulist.expiredate }</td>
+                        <td>${ulist.tel }</td>
                         <td>${ulist.email }</td>
                         <td>${ulist.address }</td>
+                        <td>${ulist.emegname }</td>
+                        <td>${ulist.emegtel }</td>
+                        <td>${ulist.regdate }</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info"><i class="fa fa-globe"></i></a>

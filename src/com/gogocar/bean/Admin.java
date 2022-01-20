@@ -6,8 +6,22 @@ public class Admin {
     private String username;
 
     private String password;
+    
+    public Admin(Integer id, String username, String password) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+	}
+    
+    
+	public Admin() {
+		super();
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
-    public Integer getId() {
+
+	public Integer getId() {
         return id;
     }
 
@@ -30,4 +44,12 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", username=" + username + ", password=" + password + "]";
+	}
+    
+    
 }
