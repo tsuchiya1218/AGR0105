@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,126 +21,76 @@
 <body>
     <div id="body">
         <ol class="breadcrumb">
-            <li class="active"><a href="#">系统</a></li>
-            <li>创建图片</li>
+            <li class="active"><a href="#">システム</a></li>
+            <li>車追加</li>
         </ol>
 
 
         <div class="tabli">
-            <span>基本信息</span>
+            <span>車詳細情報入力</span>
         </div>
 
         <div class="tabbody">
             <div class="bodyli active">
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title"><em class="s-red">*</em> 所在位置</span>
+                    <span class="title"><em class="s-red">*</em> ブランド</span>
                     <div class="inputright">
                         <select id="example-select" name="" class="form-control input-sm">
-                            <option>顶级栏目</option>
-                            <option>css</option>
-                            <option>javascript</option>
-                            <option>php</option>
-                            <option>mysql</option>
+                            <option>スーパーカー</option>
+                            <option>ミニカー</option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title">图片名称</span>
+                    <span class="title">車名称</span>
                     <div class="inputright">
                         <input type="text" name="" class="form-control input-sm">
                     </div>
                 </div>
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title">关联栏目ID</span>
+                    <span class="title">色</span>
                     <div class="inputright">
                         <input type="text" name="" class="form-control input-sm">
                     </div>
                 </div>
                  <!-- ///// -->
                  <div class="inputbox">
-                    <span class="title">链接</span>
+                    <span class="title">価格</span>
                     <div class="inputright">
-                        <input type="text" name="" class="form-control input-sm">
+                        <input type="number" name="" class="form-control input-sm">
                     </div>
                 </div>
 
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title">图片</span>
+                    <span class="title">車写真</span>
                     <div class="inputright">
                         <input type="text" name="" class="form-control input-sm">
                         <label class="btn btn-success btn-sm" for="uploadimg"><i class="fa fa-file-photo-o"></i></label>
                         <input type="file" id="uploadimg" style="display: none;">
-                        <!-- ajax formdata上传图片返回url 赋值给input框 如果是外部链接 则直接输入图片URL即可 -->
+                      
                     </div>
                 </div>
 
                  <!-- ///// -->
                  <div class="inputbox">
-                    <span class="title">图片大小</span>
+                    <span class="title">詳細情報</span>
                     <div class="inputright">
                         <input type="text" name="" class="form-control input-sm">
                     </div>
                 </div>
-               
-                <!-- ///// -->
-                <div class="inputbox">
-                    <span class="title">排序</span>
-                    <div class="inputright">
-                        <input type="text" name="" class="form-control input-sm">
-                    </div>
-                </div>
-                
-               
-                <!-- ///// -->
-                <div class="inputbox">
-                    <span class="title">打开方式</span>
-                    <div class="inputright">
-                        <label class="radio-inline" for="example-radio-inline2">
-                            <input type="radio" id="example-radio-inline2" name="example-radios-inline2"
-                                value="option2">
-                            直接打开
-                        </label>
-                        <label class="radio-inline" for="example-radio-inline2">
-                            <input type="radio" id="example-radio-inline2" name="example-radios-inline2"
-                                value="option3">
-                            新建窗口
-                        </label>
-                    </div>
-                </div>
-
-                <!-- ///// -->
-                <div class="inputbox">
-                    <span class="title">发布状态</span>
-                    <div class="inputright">
-                        <label class="radio-inline" for="example-radio-inline2">
-                            <input type="radio" id="example-radio-inline2" name="example-radios-inline2"
-                                value="option2">
-                            正常&emsp;&emsp;
-                        </label>
-                        <label class="radio-inline" for="example-radio-inline2">
-                            <input type="radio" id="example-radio-inline2" name="example-radios-inline2"
-                                value="option3">
-                            下架
-                        </label>
-                    </div>
-                </div>
-
-                 <!-- ///// -->
-                 <div class="inputbox">
-                    <span class="title">调用字段</span>
-                    <div class="inputright">
-                        <input type="text" name="" class="form-control input-sm">
-                    </div>
-                </div>
+    
             </div>
             
         </div>
         <div class="tbfooter">
-            <button class="btn btn-success"><i class="fa fa-floppy-o"></i> 创建图片</button>
+            <button class="btn btn-success"><i class="fa fa-floppy-o"></i> 追加</button>
         </div>
     </div>
 
