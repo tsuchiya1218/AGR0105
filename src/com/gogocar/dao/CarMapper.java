@@ -10,6 +10,8 @@ public interface CarMapper {
     int insert(Car record);
 
     Car selectByPrimaryKey(Integer id);
+    
+    Car selectByCarName(String carName);
 
     List<Car> selectAll();
     

@@ -69,6 +69,7 @@ pageEncoding="UTF-8"%>
                         <th>色</th>
                         <th>追加日時</th>
                         <th>レンタル状態</th>
+                        <th>車写真</th>
                         <th>料金/日</th>
                         <th class="cell-small text-center"><i class="fa fa-bolt"></i> 操作</th>
                     </tr>
@@ -84,16 +85,18 @@ pageEncoding="UTF-8"%>
                         <td>${clist.color} </td>
                         <td>${clist.addtime }</td>
                         <td>${clist.status }</i></td>
+                        <td><img alt="dds" src="../${clist.image }"></td>
                         <td>${clist.price }</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
-                                    data-placement="top" title="" data-original-title="前台预览"><i
+                                    data-placement="top" title="" data-original-title="info"><i
                                         class="fa fa-info-circle"></i></a>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
                                         class="fa fa-pencil"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-danger"><i
-                                        class="fa fa-trash-o"></i></a>
+                                <a href="deleteCar?carid=${clist.id } " class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="削除" onclick="return confirm('${clist.carno}を削除してもよろしいですか？');"><i
+                                        class="fa fa-trash-o" ></i></a>
                             </div>
                         </td>
                     </tr>
@@ -125,6 +128,8 @@ pageEncoding="UTF-8"%>
         ,range: true,
         theme:"#5cb85c"
         });
+        
+        
     </script>
 </body>
 

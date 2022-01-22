@@ -29,13 +29,14 @@ pageEncoding="UTF-8"%>
                 </a>
             </div>
             <div class="right">
-            	<c:if test="${sessionScope.user==null }">
-            		 <a href="login.html" title="ログイン">
+            	<c:if test="${sessionScope.admin==null }">
+            		<!--  <a href="login.html" title="ログイン">
                    		<i class="fa fa-user"></i>
-                	</a>
+                	</a> --> 
+                	<%response.sendRedirect("login.jsp"); %>
             	</c:if>
-               <c:if test="${sessionScope.user!=null }">
-					  <a href="" title="ログアウト">
+               <c:if test="${sessionScope.admin!=null }">
+					  <a href="logout" title="ログアウト">
                     <i class="fa fa-power-off"></i>
                		 </a>
 				</c:if>

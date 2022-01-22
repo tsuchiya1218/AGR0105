@@ -35,6 +35,26 @@ public class CarServiceImpl implements CarService{
 		}
 		return emptyList;
 	}
+
+	@Override
+	public Integer addCar(Car car) {
+		// TODO Auto-generated method stub
+		if (carMapper.selectByCarName(car.getCarno())==null) {
+			return carMapper.insert(car);
+		}
+		return -1;
+		
+	}
+
+	@Override
+	public Integer deleteCarById(Integer carid) {
+		// TODO Auto-generated method stub
+		if (carMapper.selectByPrimaryKey(carid)!=null) {
+			return carMapper.deleteByPrimaryKey(carid);
+		}
+		
+		return -1;
+	}
 	
 	
 	

@@ -1,21 +1,29 @@
 package com.gogocar.controller;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.gogocar.bean.Admin;
 import com.gogocar.bean.Car;
 import com.gogocar.bean.User;
 import com.gogocar.service.AdminService;
 import com.gogocar.service.CarService;
+import com.gogocar.utils.ConvertDateToString;
+
+
 
 
 @RequestMapping("/admin")
@@ -39,6 +47,12 @@ public class AdminController {
 			model.addAttribute("msg", "パスワードが間違っている、もう一度入力してください");
 			return "admin/login";
 		}
+	}
+	
+	@RequestMapping(value = "/logout",method = RequestMethod.GET)
+	public String adminLogout(HttpSession session) {
+		session.invalidate();
+		return "admin/index";
 	}
 
 
@@ -85,5 +99,28 @@ public class AdminController {
 
 		return "admin/car";
 	}
+	
+	@RequestMapping(value = "/addcar",method = RequestMethod.POST)
+	public String addCar(HttpServletRequest request,MultipartFile image) throws Exception {
+		String name = UUID.randomUUID().toString().replaceAll("-","");
+		String ext = FilenameUtils.getExtension(image.getOriginalFilename());
+		String url=request.getServletContext().getRealPath("/upload");
+		
+		System.out.println(url+"/"+name+"."+ext);
+		image.transferTo(new File(url+"/"+name+"."+ext));
+		carService.addCar(new Car(null, request.getParameter("carno"), request.getParameter("brandname"), "upload/"+name+"."+ext, request.getParameter("color"), ConvertDateToString.NowDateToStr(), "レンタル可能", request.getParameter("price"), request.getParameter("info")));
+		
+		
+		return "redirect:showcars";
+	}
+	
+	
+	@RequestMapping(value = "/deleteCar",method = RequestMethod.GET)
+	public String deleteCar(Integer carid) {
+		
+		carService.deleteCarById(carid);
+		return "redirect:showcars";
+	}
+	
 
 }

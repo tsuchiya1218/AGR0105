@@ -9,9 +9,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.gogocar.bean.Admin;
+import com.gogocar.bean.Car;
 import com.gogocar.dao.AdminMapper;
 import com.gogocar.dao.CarMapper;
 import com.gogocar.dao.UserMapper;
+import com.gogocar.utils.ConvertDateToString;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,7 +33,7 @@ public class MapperTetst {
 	@Test
 	public void testCRUD() {
 
-		List<Admin> list = adminMapper.selectAll();
-		list.forEach(System.out::println);
+		String str = ConvertDateToString.NowDateToStr();
+		System.out.println(str);
 	}
 }

@@ -12,4 +12,9 @@ public interface CarService {
 	List<Car> getAllCar();
 	
 	List<Car>	getSearchedCars(String searchName);
+	
+	
+	Integer addCar(Car car);
+	
+	Integer deleteCarById(Integer carid);
 }
