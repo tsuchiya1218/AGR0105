@@ -24,4 +24,17 @@
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**"/>
+			<mvc:exclude-mapping path="/user/userLogin.jsp"/>
+			<mvc:exclude-mapping path="/user/css/login.css"/>
+			<mvc:exclude-mapping path="/user/bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+			<mvc:exclude-mapping path="/GoGoCar/WebContent/admin/component/js/JQuery2.1.4.js"/>
+			<mvc:exclude-mapping path="/user/bootstrap-3.4.1-dist/js/bootstrap.min.js"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<bean class="com.gogocar.interceptor.UserLoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

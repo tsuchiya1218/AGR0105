@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 	%>
+	
 <!--LOGO部分-->
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-6">
@@ -15,7 +17,7 @@
 					<a href="#">购物车</a>
 				</div>
 			</div>
-
+			
 			<!--导航栏部分-->
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
@@ -28,7 +30,7 @@
 					        <span class="icon-bar"></span>
 					      </button>
 						<a class="navbar-brand" href="#">GoGoCar</a>
-					</div>
+			 		</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
