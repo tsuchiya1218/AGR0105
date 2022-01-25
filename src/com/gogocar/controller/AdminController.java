@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gogocar.bean.Admin;
@@ -92,12 +93,16 @@ public class AdminController {
 
 	@RequestMapping(value="/searchcars",method=RequestMethod.GET)
 	public String searchCars(HttpServletRequest request, Model model) {
-		String datestr = request.getParameter("date");
-		String[] split = datestr.split(" . ");
-		System.out.println("開始時間："+split[0]);
-		System.out.println("終了時間："+split[1]);
-
-		return "admin/car";
+		List<Car> searchedCars = carService.getSearchedCars(request.getParameter("search"));
+		if (!searchedCars.isEmpty()) {
+			model.addAttribute("carList",searchedCars);
+			return "admin/car";
+		}else {
+			model.addAttribute("noneSearched",true);
+			return "admin/car";
+		}
+		
+		
 	}
 	
 	@RequestMapping(value = "/addcar",method = RequestMethod.POST)
@@ -116,10 +121,10 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/deleteCar",method = RequestMethod.GET)
-	public String deleteCar(Integer carid) {
-		
+	public String deleteCar(Integer carid,Model model) {
+		model.addAttribute("isdeleted", true);
 		carService.deleteCarById(carid);
-		return "redirect:showcars";
+		return "forward:showcars";
 	}
 	
 

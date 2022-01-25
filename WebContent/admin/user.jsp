@@ -43,7 +43,7 @@ pageEncoding="UTF-8"%>
                 <div class="liselect w300">
                 <form action="searchusers" method="get">
                     <div class="input-group">
-                        <input type="text" id="example-input-typeahead" name="search" class="form-control example-typeahead"　 placeholder="検索する">
+                        <input type="text" id="example-input-typeahead" name="search" class="form-control example-typeahead"　 placeholder="会員名で検索">
                  
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>

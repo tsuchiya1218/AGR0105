@@ -13,6 +13,7 @@ public interface CarService {
 	
 	List<Car>	getSearchedCars(String searchName);
 	
+	Car getCarById(Integer carid);
 	
 	Integer addCar(Car car);
 	

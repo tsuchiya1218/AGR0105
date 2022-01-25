@@ -1,5 +1,7 @@
 package com.gogocar.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,16 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.gogocar.bean.Car;
 import com.gogocar.bean.User;
+import com.gogocar.service.CarService;
 import com.gogocar.service.UserService;
 
-
+@RequestMapping("/user")
 @Controller
 public class UserController {
 	 
 	 @Autowired
 	 UserService userService;
-	
+	 
+	 @Autowired
+	 CarService carService;
 	 
 		/*
 		 * @RequestMapping(value = "/regist",method = RequestMethod.POST ) public String
@@ -30,26 +36,42 @@ public class UserController {
 		 * }
 		 */
 	
+	 @RequestMapping(value = "doindex")
+	 public String doIndex(HttpServletRequest request,Model model) {
+		 	List<Car> allCar = carService.getAllCar();
+		 
+		 	if (!allCar.isEmpty()) {
+				model.addAttribute("carList", allCar);
+		 		return "user/list";
+			}
+		 	return "user/userLogin";
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	public String checkLogin(HttpServletRequest request,HttpSession session,Model model) {
 		User user = userService.Logincheck(request.getParameter("username"), request.getParameter("password"));
 		if (user!=null) {
 			model.addAttribute("user", user);
 			session.setAttribute("user", user);
-			return "index";
+			return "user/index";
 		}else {
 			model.addAttribute("msg", "パスワードが間違っている、もう一度入力してください");
-			return "Login";
+			return "user/userLogin";
 		}
 	}
 	
-	@RequestMapping(value = "userinfo",method = RequestMethod.GET)
+	@RequestMapping(value = "/userinfo",method = RequestMethod.GET)
 	public String showUser(HttpSession session) {
 		User user=(User)session.getAttribute("user");
 		if (user!=null) {
-			return "Userinfo";
+			return "user/userdetails";
 		}else {
-			return "index";
+			return "user/index";
 		}
 		
 	}
@@ -64,4 +86,7 @@ public class UserController {
 		return "Login";
 	}
 	
+
+	
+
 }

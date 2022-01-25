@@ -26,30 +26,45 @@ pageEncoding="UTF-8"%>
             <li class="active"><a href="#">システム</a></li>
             <li>車リスト</li>
         </ol>
+       	<c:if test="${isdeleted !=null}">
+       		<div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            	削除しました。
+        </div>
+       	</c:if>
+       	<c:if test="${noneSearched !=null}">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            	該当する車名は見つかりません。
+        </div>
+       	</c:if>
+    
+        
+      
+        
         <div class="barboxs">
             <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
             <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button>
 
             <div class="leftbox">
-                <div class="liselect">
-                    <select id="val_skill" name="val_skill" class="form-control ">
-                        <option value="">发布状态</option>
-                        <option value="正常">正常</option>
-                        <option value="审核">审核</option>
-                    </select>
-                </div>
+                
                 <form action="searchcars" method="get">
-                <div class="ml10">
+          <!--     <div class="ml10">
                     <div class="input-group date input-datepicker mtb0">
-                        <input type="text" id="date" placeholder="请选择时间段"
+                        <input type="text" id="date" placeholder="期間を選択"
                             name="date" class="form-control cursorpointer" readonly>
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
-                </div>
-
+                   </div>
+                </div>  -->
                 <div class="liselect w300 ml10">
                     <div class="input-group">
-                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" placeholder="请输入关键词">
+                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車名で検索">
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
                         </span>
@@ -85,7 +100,7 @@ pageEncoding="UTF-8"%>
                         <td>${clist.color} </td>
                         <td>${clist.addtime }</td>
                         <td>${clist.status }</i></td>
-                        <td><img alt="dds" src="../${clist.image }"></td>
+                        <td><img alt="dds" src="../${clist.image }" class="img-thumbnail" ></td>
                         <td>${clist.price }</td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -128,7 +143,6 @@ pageEncoding="UTF-8"%>
         ,range: true,
         theme:"#5cb85c"
         });
-        
         
     </script>
 </body>

@@ -55,6 +55,14 @@ public class CarServiceImpl implements CarService{
 		
 		return -1;
 	}
+
+	@Override
+	public Car getCarById(Integer carid) {
+		if (carMapper.selectByPrimaryKey(carid)!=null) {
+			return carMapper.selectByPrimaryKey(carid);
+		}
+		return null;
+	}
 	
 	
 	
