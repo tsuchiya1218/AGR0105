@@ -1,5 +1,6 @@
 package com.gogocar.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,5 +15,20 @@ public class ConvertDateToString {
 		String str = datetime.format(format);
 		return str;
 	}
+	
+	public static long dayDiff(String date1, String date2) {
+		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+		long diff=0l;
+		try {
+			long d1 = formater.parse(date1).getTime();
+			long d2 = formater.parse(date2).getTime();
+			//diff=(Math.abs(d1-d2) / (1000 * 60 * 60 * 24));
+			diff=(d1-d2)/(1000 * 60 * 60 * 24);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return diff;
+	}
+
 	
 }

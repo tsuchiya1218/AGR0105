@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gogocar.dao.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.gogocar.bean.Order">
+  <resultMap id="BaseResultMap" type="com.gogocar.bean.Carorder">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="car_id" jdbcType="INTEGER" property="carId" />
@@ -11,19 +11,19 @@
     <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order
+    delete from carorder
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gogocar.bean.Order">
-    insert into order (id, user_id, car_id, 
+  <insert id="insert" parameterType="com.gogocar.bean.Carorder">
+    insert into carorder (id, user_id, car_id, 
       order_price, start_time, end_time, 
       order_status)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{carId,jdbcType=INTEGER}, 
       #{orderPrice,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
       #{orderStatus,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.gogocar.bean.Order">
-    update order
+  <update id="updateByPrimaryKey" parameterType="com.gogocar.bean.Carorder">
+    update carorder
     set user_id = #{userId,jdbcType=INTEGER},
       car_id = #{carId,jdbcType=INTEGER},
       order_price = #{orderPrice,jdbcType=VARCHAR},
@@ -34,11 +34,16 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, user_id, car_id, order_price, start_time, end_time, order_status
-    from order
+    from carorder
     where id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectByCarId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, car_id, order_price, start_time, end_time, order_status
+    from carorder
+    where car_id = #{carId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, user_id, car_id, order_price, start_time, end_time, order_status
-    from order
+    from carorder
   </select>
 </mapper>

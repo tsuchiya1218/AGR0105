@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gogocar.bean.Admin;
 import com.gogocar.bean.Car;
+import com.gogocar.bean.Carorder;
 import com.gogocar.bean.User;
 import com.gogocar.service.AdminService;
 import com.gogocar.service.CarService;
+import com.gogocar.service.OrderService;
 import com.gogocar.utils.ConvertDateToString;
 
 
@@ -36,6 +38,9 @@ public class AdminController {
 
 	@Autowired
 	CarService carService;
+	
+	@Autowired
+	OrderService orderService;
 
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	public String adminLogin(HttpServletRequest request,HttpSession session,Model model) {
@@ -87,8 +92,9 @@ public class AdminController {
 		if(!carList.isEmpty()) {
 			model.addAttribute("carList", carList);
 			return "admin/car";
+		}else {
+			return "admin/car";
 		}
-		return "admin/index";
 	}
 
 	@RequestMapping(value="/searchcars",method=RequestMethod.GET)
@@ -125,6 +131,19 @@ public class AdminController {
 		model.addAttribute("isdeleted", true);
 		carService.deleteCarById(carid);
 		return "forward:showcars";
+	}
+	
+	@RequestMapping(value = "/showorders")
+	public String showOrders(Model model) {
+		List<Carorder> orderList = orderService.getAllOrders();
+		
+		if (!orderList.isEmpty()) {
+			model.addAttribute("orderList", orderList);
+			return "admin/order";
+		}else {
+			return "admin/order";
+		}
+		
 	}
 	
 

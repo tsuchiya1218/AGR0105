@@ -33,7 +33,11 @@ public class MapperTetst {
 	@Test
 	public void testCRUD() {
 
-		String str = ConvertDateToString.NowDateToStr();
-		System.out.println(str);
+		
+		
+		String startTime="2021-01-26";
+		String endTime="2021-01-28";
+		long diff = ConvertDateToString.dayDiff(endTime, startTime);
+		System.out.println(diff);
 	}
 }

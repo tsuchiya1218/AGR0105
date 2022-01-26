@@ -80,9 +80,9 @@ public class UserController {
 		if(session.getAttribute("user")!=null) {
 			
 			session.invalidate();
-			return "index";
+			return "user/index";
 		}
-		return "Login";
+		return "user/userLogin";
 	}
 	
 

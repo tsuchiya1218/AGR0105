@@ -1,16 +1,18 @@
 package com.gogocar.dao;
 
-import com.gogocar.bean.Order;
+import com.gogocar.bean.Carorder;
 import java.util.List;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Order record);
+    int insert(Carorder record);
 
-    Order selectByPrimaryKey(Integer id);
+    Carorder selectByPrimaryKey(Integer id);
+    
+    Carorder selectByCarId(Integer carid);
 
-    List<Order> selectAll();
+    List<Carorder> selectAll();
 
-    int updateByPrimaryKey(Order record);
+    int updateByPrimaryKey(Carorder record);
 }

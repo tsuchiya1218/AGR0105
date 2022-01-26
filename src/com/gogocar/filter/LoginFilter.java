@@ -27,7 +27,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request =(HttpServletRequest)arg0;
 		HttpServletResponse response =(HttpServletResponse)arg1;
 		HttpSession session = request.getSession();
-		if(request.getRequestURI().equals("/GoGoCar/user/login")||request.getRequestURI().equals("/GoGoCar/user/css/login.css")||request.getRequestURI().equals("/GoGoCar/user/bootstrap-3.4.1-dist/css/bootstrap.min.css")||request.getRequestURI().equals("/GoGoCar/user/bootstrap-3.4.1-dist/js/bootstrap.min.js")||request.getRequestURI().equals("/GoGoCar/admin/component/js/JQuery2.1.4.js")||request.getRequestURI().equals("/GoGoCar/img/logo.jpg")){
+		if(request.getRequestURI().equals("/GoGoCar/user/login")||request.getRequestURI().equals("/GoGoCar/user/css/login.css")||request.getRequestURI().startsWith("/GoGoCar/user/bootstrap-3.4.1-dist/")||request.getRequestURI().equals("/GoGoCar/admin/component/js/JQuery2.1.4.js")||request.getRequestURI().equals("/GoGoCar/img/logo.jpg")||request.getRequestURI().equals("/GoGoCar/user/doindex")||request.getRequestURI().equals("/GoGoCar/user/index.jsp")){
 			chain.doFilter(request, response);
 		}else if(session.getAttribute("user")==null&&request.getRequestURI().indexOf("/user/userLogin.jsp")==-1) {
 			System.out.println(request.getRequestURI());

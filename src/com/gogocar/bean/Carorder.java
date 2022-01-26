@@ -1,6 +1,6 @@
 package com.gogocar.bean;
 
-public class Order {
+public class Carorder {
     private Integer id;
 
     private Integer userId;
@@ -17,7 +17,7 @@ public class Order {
 
     
     
-    public Order(Integer id, Integer userId, Integer carId, String orderPrice, String startTime, String endTime,
+    public Carorder(Integer id, Integer userId, Integer carId, String orderPrice, String startTime, String endTime,
 			String orderStatus) {
 		super();
 		this.id = id;
@@ -31,7 +31,7 @@ public class Order {
     
     
 
-	public Order() {
+	public Carorder() {
 		super();
 		// TODO 自動生成されたコンストラクター・スタブ
 	}

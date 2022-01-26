@@ -18,11 +18,12 @@ public class CarServiceImpl implements CarService{
 
 	@Override
 	public List<Car> getAllCar() {
+		List<Car> emptyList = new ArrayList<Car>();
 		List<Car> carList = carMapper.selectAll();
 		if (!carList.isEmpty()){
 				return carList;
 		}
-		return null;
+		return emptyList;
 	}
 
 	@Override

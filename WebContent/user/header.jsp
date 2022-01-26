@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   	
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -11,11 +11,7 @@
 				<div class="col-md-4 col-sm-6 col-xs-6">
 					<img src="../img/logo.jpg" style="height: 6rem;"/>
 				</div>
-				<div class="col-md-4 col-sm-6 col-xs-6" style="line-height: 50px;height: 50px;">
-					<a href="#">登录</a>
-					<a href="#">注册</a>
-					<a href="#">购物车</a>
-				</div>
+			
 			</div>
 			
 			<!--导航栏部分-->
@@ -29,7 +25,7 @@
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					      </button>
-						<a class="navbar-brand" href="#">GoGoCar</a>
+						<a class="navbar-brand" href="<%=basePath %>user/doindex">GoGoCar</a>
 			 		</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,17 +43,29 @@
 									<li>
 										<a href="#">レンタル履歴</a>
 									</li>
-								<!-- 	<li>
-										<a href="#">鞋靴箱包</a>
-									</li> -->
+							
 								</ul>
 							</li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<input type="text" class="form-control" placeholder="Search">
 							</div>
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="submit" class="btn btn-default">Submit</button> -->
+					 <c:if test="${sessionScope.user!=null }">
+						<a href="<%=basePath %>user/logout" style="text-decoration:none;color: black;">
+							 <button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-log-out"></span> ログアウト
+        					 </button>
+        				</a>
+        			</c:if>
+        			<c:if test="${sessionScope.user==null }">
+        				<a href="<%=basePath %>user/userLogin.jsp" style="text-decoration:none;color: black;">
+							 <button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-log-in"></span> ログイン
+        					 </button>
+        				</a>
+        			</c:if>
 						</form>
 
 					</div>

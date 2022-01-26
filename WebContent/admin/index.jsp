@@ -74,6 +74,15 @@ pageEncoding="UTF-8"%>
                             </div>
                         </dd>
                     </dl>
+                    
+                     <dl>
+                        <dt><i class="fa fa-file-text"></i> <span>注文管理</span></dt>
+                        <dd>
+                            <div class='li'>
+                                <a href="showorders" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>注文一覧</span></a>
+                            </div>
+                        </dd>
+                    </dl>
 
 
 

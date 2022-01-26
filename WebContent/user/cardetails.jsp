@@ -6,10 +6,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="../admin/css/bootstrap.css" />
+		<!-- <link rel="stylesheet" href="../admin/css/bootstrap.css" />
 		<script type="text/javascript" src="../admin/component/js/JQuery2.1.4.js"></script>
-		<script type="text/javascript" src="../admin/js/vendor/bootstrap.min.js"></script>
-		
+		<script type="text/javascript" src="../admin/js/vendor/bootstrap.min.js"></script> -->
+		<link rel="stylesheet" href="/GoGoCar/user/bootstrap-3.4.1-dist/css/bootstrap.min.css" />
+		<script type="text/javascript" src="../admin/component/js/JQuery2.1.4.js"></script>
+		<script type="text/javascript" src="/GoGoCar/user/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
 		
 		   <link rel="stylesheet" href="../admin/css/themes.css">
 		   <link rel="stylesheet" href="../admin/css/plugins.css">
