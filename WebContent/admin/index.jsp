@@ -53,14 +53,14 @@ pageEncoding="UTF-8"%>
 
 
                     <dl>
-                        <dt><i class="fa fa-fw fa-image"></i> <span>車両管理</span></dt>
+                        <dt><i class="fa fa-car"></i> <span>車両管理</span></dt>
                         <dd>
                             <div class='li'>
                                 <a href="showcars" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車両リスト</span></a>
                             </div>
-                            <div class='li'>
+                           <!--  <div class='li'>
                                 <a href="car_create.jsp" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>車リスト追加</span></a>
-                            </div>
+                            </div> -->
                         </dd>
                     </dl>
 

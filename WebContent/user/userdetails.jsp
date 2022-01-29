@@ -5,7 +5,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>ユーザ情報</title>
 		<link rel="stylesheet" href="../admin/css/bootstrap.css" />
 		<script type="text/javascript" src="../admin/component/js/JQuery2.1.4.js"></script>
 		<script type="text/javascript" src="../admin/js/vendor/bootstrap.min.js"></script>

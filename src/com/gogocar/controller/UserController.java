@@ -1,6 +1,8 @@
 package com.gogocar.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.gogocar.bean.Car;
 import com.gogocar.bean.User;
 import com.gogocar.service.CarService;
+import com.gogocar.service.OrderService;
 import com.gogocar.service.UserService;
 
 @RequestMapping("/user")
@@ -25,6 +28,9 @@ public class UserController {
 	 
 	 @Autowired
 	 CarService carService;
+	 
+	 @Autowired
+	 OrderService orderService;
 	 
 		/*
 		 * @RequestMapping(value = "/regist",method = RequestMethod.POST ) public String
@@ -83,6 +89,22 @@ public class UserController {
 			return "user/index";
 		}
 		return "user/userLogin";
+	}
+	
+	@RequestMapping(value = "/orderhistory",method = RequestMethod.GET)
+	public String orderHistory(Integer userid,Model model) {
+		List<Map<String, Object>> userOrder = orderService.getOrdersByUserId(userid);
+		if (!userOrder.isEmpty()) {
+		
+			model.addAttribute("userOrder", userOrder);
+			
+			return "user/orderdetails";
+		}else {
+			model.addAttribute("errMsg", "");
+			return "user/orderdetails";
+		}
+		
+		
 	}
 	
 

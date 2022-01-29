@@ -146,5 +146,22 @@ public class AdminController {
 		
 	}
 	
+	
+	@RequestMapping(value = "/deleteOrder",method = RequestMethod.GET)
+	public String deleteOrder(Integer orderid,Model model) {
+		
+		Integer isdeleted = orderService.deleteOrderById(orderid);
+		if (isdeleted!=-1) {
+			model.addAttribute("isdeleted", true);
+			return "forward:showorders";
+		}else {
+			
+			model.addAttribute("deletedfault", true);
+			return "forward:showorders";
+		}
+		
+	}
+	
+	
 
 }

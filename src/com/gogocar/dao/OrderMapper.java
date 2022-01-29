@@ -2,6 +2,7 @@ package com.gogocar.dao;
 
 import com.gogocar.bean.Carorder;
 import java.util.List;
+import java.util.Map;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
@@ -15,4 +16,6 @@ public interface OrderMapper {
     List<Carorder> selectAll();
 
     int updateByPrimaryKey(Carorder record);
+    
+    List<Map<String, Object>> selectByUserId(Integer userid);
 }

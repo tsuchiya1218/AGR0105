@@ -41,7 +41,7 @@
 										<a href="<%=basePath %>user/userinfo">ユーザ情報</a>
 									</li>
 									<li>
-										<a href="#">レンタル履歴</a>
+										<a href="<%=basePath %>user/orderhistory?userid=${sessionScope.user.id}">レンタル履歴</a>
 									</li>
 							
 								</ul>

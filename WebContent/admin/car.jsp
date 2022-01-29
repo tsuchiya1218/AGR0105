@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
       
         
         <div class="barboxs">
-            <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
+            <a href="car_create.jsp" style="text-decoration:none;color: black;"><button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="車追加"><i class="fa fa-plus-square"></i></button></a>
             <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button>
 
             <div class="leftbox">

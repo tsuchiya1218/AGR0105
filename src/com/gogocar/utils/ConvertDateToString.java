@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 public class ConvertDateToString {
 	
@@ -16,12 +14,12 @@ public class ConvertDateToString {
 		return str;
 	}
 	
-	public static long dayDiff(String date1, String date2) {
+	public static Long dayDiff(String date1, String date2) {
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-		long diff=0l;
+		Long diff=0l;
 		try {
-			long d1 = formater.parse(date1).getTime();
-			long d2 = formater.parse(date2).getTime();
+			Long d1 = formater.parse(date1).getTime();
+			Long d2 = formater.parse(date2).getTime();
 			//diff=(Math.abs(d1-d2) / (1000 * 60 * 60 * 24));
 			diff=(d1-d2)/(1000 * 60 * 60 * 24);
 		} catch (ParseException e) {

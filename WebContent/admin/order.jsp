@@ -35,13 +35,13 @@ pageEncoding="UTF-8"%>
             	削除しました。
         </div>
        	</c:if>
-       	<c:if test="${noneSearched !=null}">
+       	<c:if test="${deletedfault !=null}">
         <div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert"
                     aria-hidden="true">
                 &times;
             </button>
-            	該当する注文は見つかりません。
+            	該当注文を削除出来ません(注文状態をもう一度確認してください)
         </div>
        	</c:if>
     
@@ -107,8 +107,8 @@ pageEncoding="UTF-8"%>
                                         class="fa fa-info-circle"></i></a>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
                                         class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip"
-                                data-placement="top" title="" data-original-title="削除" onclick="return confirm('${clist.carno}を削除してもよろしいですか？');"><i
+                                <a href="deleteOrder?orderid=${olist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="削除" onclick="return confirm('注文番号「${olist.id }」を削除してもよろしいですか？');"><i
                                         class="fa fa-trash-o" ></i></a>
                             </div>
                         </td>

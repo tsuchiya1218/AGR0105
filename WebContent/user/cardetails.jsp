@@ -35,6 +35,10 @@
     			</tr>
   			</thead>
   			<tbody>
+  			
+  		<form action="checkout" method="post">
+  			<input name="carinfo" value="${car.id }" type="hidden" />
+  			<input name="userinfo" value="${sessionScope.user.id }" type="hidden" />
     		<tr>
       			<td rowspan="8">
    
@@ -72,11 +76,13 @@
      			 </td>
       			 <td></td>
     		</tr>
-
+				
     		<tr>
-     			 <td><button class="btn btn-success"><i class="fa fa-floppy-o"></i>book</button></td>
+     			 <td><button class="btn btn-success"><i class="fa fa-car" aria-hidden="true"></i>予約</button></td>
       			 <td></td>
     		</tr>
+    	</form>	
+    		
   			</tbody>
 			</table>
 		

@@ -1,6 +1,7 @@
 package com.gogocar.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,9 @@ public interface OrderService {
 	
 	Carorder getOrderById(Integer id);
 	
+	List<Map<String, Object>> getOrdersByUserId(Integer userid);
 	
+	Integer deleteOrderById(Integer orderid);
 	
 	Integer createOrder(Carorder order);
 
