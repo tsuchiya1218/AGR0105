@@ -21,5 +21,7 @@ public interface OrderService {
 	Integer deleteOrderById(Integer orderid);
 	
 	Integer createOrder(Carorder order);
+	
+	Integer approveOrder(Integer orderid);
 
 }

@@ -162,6 +162,20 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(value = "/approveOrder",method = RequestMethod.GET)
+	public String approveOrder(Integer orderid,Model model) {
+	
+		Integer isApproved = orderService.approveOrder(orderid);
+		if (isApproved!=-1) {
+			model.addAttribute("isApproved",true);
+			return "forward:showorders";
+		}else {
+			model.addAttribute("updatefalut",true);
+			return "forward:showorders";
+			
+		}
+	}
+	
 	
 
 }

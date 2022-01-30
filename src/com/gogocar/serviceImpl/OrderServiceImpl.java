@@ -75,5 +75,15 @@ public class OrderServiceImpl implements OrderService{
 		
 	}
 
+	@Override
+	public Integer approveOrder(Integer orderid) {
+		Carorder order = orderMapper.selectByPrimaryKey(orderid);
+		if (order!=null) {
+			order.setOrderStatus("レンタル中");
+			return orderMapper.updateByPrimaryKey(order);
+		}
+		return -1;
+	}
+
 
 }

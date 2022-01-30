@@ -105,8 +105,10 @@ pageEncoding="UTF-8"%>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
                                     data-placement="top" title="" data-original-title="info"><i
                                         class="fa fa-info-circle"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
-                                        class="fa fa-pencil"></i></a>
+                              	<c:if test="${olist.orderStatus eq 'レンタル審査'}">  
+                                <a href="approveOrder?orderid=${olist.id }" class="btn btn-xs btn-success"><i
+                                        class="fa fa-check"></i></a>
+                                </c:if>
                                 <a href="deleteOrder?orderid=${olist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="削除" onclick="return confirm('注文番号「${olist.id }」を削除してもよろしいですか？');"><i
                                         class="fa fa-trash-o" ></i></a>

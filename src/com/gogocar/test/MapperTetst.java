@@ -40,13 +40,12 @@ public class MapperTetst {
 
 	@Test
 	public void testCRUD() {
-		List<String> resultList=new ArrayList<String>();
-		List<Map<String, Object>> id = orderMapper.selectByUserId(1);
-		for(Map map:id) {
-			map.forEach((k,v)->System.out.println(k));
-		}
-		
-		
+		Carorder order = orderMapper.selectByPrimaryKey(3);
+		System.out.println(order);
+		order.setOrderStatus("レンタル審査");
+		orderMapper.updateByPrimaryKey(order);
+		Carorder order2 = orderMapper.selectByPrimaryKey(3);
+		System.out.println(order2);
 	
 	}
 }
