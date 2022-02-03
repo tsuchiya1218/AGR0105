@@ -106,7 +106,8 @@ pageEncoding="UTF-8"%>
                                     data-placement="top" title="" data-original-title="info"><i
                                         class="fa fa-info-circle"></i></a>
                               	<c:if test="${olist.orderStatus eq 'レンタル審査'}">  
-                                <a href="approveOrder?orderid=${olist.id }" class="btn btn-xs btn-success"><i
+                                <a href="approveOrder?orderid=${olist.id }" class="btn btn-xs btn-success" data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="許可"><i
                                         class="fa fa-check"></i></a>
                                 </c:if>
                                 <a href="deleteOrder?orderid=${olist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"

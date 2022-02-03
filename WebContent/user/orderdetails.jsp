@@ -55,11 +55,14 @@
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
                                     data-placement="top" title="" data-original-title="info"><i
                                         class="fa fa-info-circle"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
-                                        class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                <c:if test="${uomap['order_status'] eq 'レンタル中'}">
+                                <a href="backCar?orderid=${uomap['id']}" class="btn btn-xs btn-success" data-toggle="tooltip"
+                                data-placement="top" title="返却" ><i
+                                        class="fa fa-undo"></i></a>
+                                </c:if>
+                                <%-- <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="削除" onclick="return confirm('注文番号「${olist.id }」を削除してもよろしいですか？');"><i
-                                        class="fa fa-trash-o" ></i></a>
+                                        class="fa fa-trash-o" ></i></a> --%>
                             </div>
                         </td>
                     </tr>

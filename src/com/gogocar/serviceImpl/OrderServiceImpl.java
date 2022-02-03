@@ -78,10 +78,22 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Integer approveOrder(Integer orderid) {
 		Carorder order = orderMapper.selectByPrimaryKey(orderid);
-		if (order!=null) {
+		if (order!=null&&order.getOrderStatus().equals("レンタル審査")) {
 			order.setOrderStatus("レンタル中");
 			return orderMapper.updateByPrimaryKey(order);
 		}
+		return -1;
+	}
+
+	@Override
+	public Integer backOrder(Integer orderid) {
+		// TODO Auto-generated method stub
+		Carorder order = orderMapper.selectByPrimaryKey(orderid);
+		if (order!=null&&order.getOrderStatus().equals("レンタル中")) {
+			order.setOrderStatus("返却審査");
+			return orderMapper.updateByPrimaryKey(order);
+		}
+		
 		return -1;
 	}
 

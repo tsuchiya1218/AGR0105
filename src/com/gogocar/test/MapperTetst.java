@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import com.gogocar.dao.CarMapper;
 import com.gogocar.dao.OrderMapper;
 import com.gogocar.dao.UserMapper;
 import com.gogocar.utils.ConvertDateToString;
+import com.gogocar.utils.mailUtils;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,12 +44,15 @@ public class MapperTetst {
 
 	@Test
 	public void testCRUD() {
-		Carorder order = orderMapper.selectByPrimaryKey(3);
-		System.out.println(order);
-		order.setOrderStatus("レンタル審査");
-		orderMapper.updateByPrimaryKey(order);
-		Carorder order2 = orderMapper.selectByPrimaryKey(3);
-		System.out.println(order2);
+		try {
+			mailUtils.sendFromYandex("gogo.car@yandex.com", "zxttircckhhnaqvl", "20jy0122@jec.ac.jp,20jy0113@jec.ac.jp", "Project Test for 2 User", "its test for prj send to 2 users");
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
 	}
 }
