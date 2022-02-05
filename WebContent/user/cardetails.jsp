@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-		<!--最外层的布局容器-->
+		
 		<div class="container">
 			<jsp:include page="header.jsp"></jsp:include>
 			<table class="table">
@@ -32,8 +32,8 @@
     			<tr>
       				<th style="width:50%;"></th>
       				<th></th>
-    			</tr>
-  			</thead>
+    			</tr> 
+  			</thead> 
   			<tbody>
   			
   		<form action="checkout" method="post">
@@ -107,6 +107,8 @@
 		        laydate.render({
 		        elem: '#date'
 		        ,range: true,
+		        format: 'yyyy-MM-dd HH:mm',
+		        type: 'datetime',
 		        lang: 'en',
 		        theme:"#5cb85c"
 		        });

@@ -53,6 +53,12 @@ public class MapperTetst {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 	
+	@Test
+	public void  strUtils(){
+		
+		String str = ConvertDateToString.NowDateToStr();
+		System.out.println(str);
 	}
 }

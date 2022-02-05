@@ -54,7 +54,7 @@ public class CarController {
 		orderService.createOrder(order);
 		
 		
-		return "redirect:/user/doindex";
+		return "user/thanks";
 	}
 	
 	
