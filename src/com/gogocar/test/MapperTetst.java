@@ -64,8 +64,7 @@ public class MapperTetst {
 	
 	@Test
 	public void  carTest(){
-		
-		List<Car> selectAll = carMapper.selectAll();
-		System.out.println(selectAll);
+		List<Map<String, Object>> userId = orderMapper.selectcountByUserId();
+		System.out.println(userId);
 	}
 }

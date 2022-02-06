@@ -1,11 +1,15 @@
 package com.gogocar.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gogocar.bean.Admin;
 import com.gogocar.bean.Car;
 import com.gogocar.bean.Carorder;
@@ -24,6 +29,7 @@ import com.gogocar.bean.User;
 import com.gogocar.service.AdminService;
 import com.gogocar.service.CarService;
 import com.gogocar.service.OrderService;
+import com.gogocar.service.UserService;
 import com.gogocar.utils.ConvertDateToString;
 
 
@@ -41,6 +47,9 @@ public class AdminController {
 	
 	@Autowired
 	OrderService orderService;
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	public String adminLogin(HttpServletRequest request,HttpSession session,Model model) {
@@ -188,6 +197,30 @@ public class AdminController {
 			return "forward:showorders";
 			
 		}
+		
+	}
+	
+	@RequestMapping(value = "/draw")
+	public void draw(HttpServletResponse response) throws IOException {
+		
+		
+		Map<String, Long> map = new HashMap<String, Long>();
+		List<Map<String, Object>> UordersList = orderService.selectCountOrder();
+		for(Map UoderMap:UordersList) {
+			 Integer uid =(Integer)UoderMap.get("user_id");
+			 User user = userService.getUserByUID(uid);
+			 Long orderCount=(Long)UoderMap.get("order_count");
+			 map.put(user.getUsername(), orderCount);
+		}
+		System.out.println(map);
+		
+		/*
+		 * map.put("user1", 5); map.put("user2", 7); map.put("user3", 3);
+		 * map.put("user4", 1);
+		 */
+
+		String mapstr = new ObjectMapper().writeValueAsString(map);
+		response.getWriter().print(mapstr);
 		
 	}
 	

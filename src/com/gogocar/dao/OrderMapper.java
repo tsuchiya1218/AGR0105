@@ -18,4 +18,5 @@ public interface OrderMapper {
     int updateByPrimaryKey(Carorder record);
     
     List<Map<String, Object>> selectByUserId(Integer userid);
+    List<Map<String, Object>> selectcountByUserId();
 }

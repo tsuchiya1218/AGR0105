@@ -83,6 +83,15 @@ pageEncoding="UTF-8"%>
                             </div>
                         </dd>
                     </dl>
+                    
+                    <dl>
+                        <dt><i class="fa fa-file-text"></i> <span>売上分析</span></dt>
+                        <dd>
+                            <div class='li'>
+                                <a href="statistics.jsp" target="rightiframe"><i class="fa fa-fw fa-angle-right"></i><span>売上グラフ</span></a>
+                            </div>
+                        </dd>
+                    </dl>
 
 
 

@@ -97,5 +97,11 @@ public class OrderServiceImpl implements OrderService{
 		return -1;
 	}
 
+	@Override
+	public List<Map<String, Object>> selectCountOrder() {
+		// TODO Auto-generated method stub
+		return orderMapper.selectcountByUserId();
+	}
+
 
 }

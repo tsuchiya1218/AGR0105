@@ -25,5 +25,7 @@ public interface OrderService {
 	Integer approveOrder(Integer orderid);
 	
 	Integer backOrder(Integer orderid);
+	
+	List<Map<String, Object>> selectCountOrder();
 
 }
