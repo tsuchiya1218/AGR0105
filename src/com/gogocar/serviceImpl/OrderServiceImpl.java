@@ -90,7 +90,7 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		Carorder order = orderMapper.selectByPrimaryKey(orderid);
 		if (order!=null&&order.getOrderStatus().equals("レンタル中")) {
-			order.setOrderStatus("返却審査");
+			order.setOrderStatus("レンタル完了");
 			return orderMapper.updateByPrimaryKey(order);
 		}
 		

@@ -40,9 +40,7 @@ pageEncoding="UTF-8"%>
                         <select id="example-select" name="brandname" class="form-control input-sm">
                             <option>スーパーカー</option>
                             <option>ミニカー</option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
+                            <option>グリーン省エネ</option>
                         </select>
                     </div>
                 </div>

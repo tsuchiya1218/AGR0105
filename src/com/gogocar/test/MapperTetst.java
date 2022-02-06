@@ -61,4 +61,11 @@ public class MapperTetst {
 		String str = ConvertDateToString.NowDateToStr();
 		System.out.println(str);
 	}
+	
+	@Test
+	public void  carTest(){
+		
+		List<Car> selectAll = carMapper.selectAll();
+		System.out.println(selectAll);
+	}
 }

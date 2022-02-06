@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
             <div class="left">
                 <div class="navbar">
                     <dl>
-                        <dt><a href="controlpanel.jsp" target="rightiframe"><i class="fa fa-fw fa-tachometer"></i><span>控制面板</span></a></dt>
+                        <dt><a href="controlpanel.jsp" target="rightiframe"><i class="fa fa-fw fa-tachometer"></i><span>管理画面</span></a></dt>
                     </dl>
 
 

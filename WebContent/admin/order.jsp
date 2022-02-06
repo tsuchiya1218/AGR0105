@@ -110,9 +110,14 @@ pageEncoding="UTF-8"%>
                                 data-placement="top" title="" data-original-title="許可"><i
                                         class="fa fa-check"></i></a>
                                 </c:if>
-                                <a href="deleteOrder?orderid=${olist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                <c:if test="${olist.orderStatus eq 'レンタル中'}">
+                                <a href="backCar?orderid=${olist.id }" class="btn btn-xs btn-success" data-toggle="tooltip"
+                                data-placement="top" title="返却" ><i
+                                        class="fa fa-undo"></i></a>
+                                </c:if>
+                                <%-- <a href="deleteOrder?orderid=${olist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="削除" onclick="return confirm('注文番号「${olist.id }」を削除してもよろしいですか？');"><i
-                                        class="fa fa-trash-o" ></i></a>
+                                        class="fa fa-trash-o" ></i></a> --%>
                             </div>
                         </td>
                     </tr>
