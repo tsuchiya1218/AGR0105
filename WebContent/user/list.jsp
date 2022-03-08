@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css" />
 		<script type="text/javascript" src="../admin/component/js/JQuery2.1.4.js"></script>
 		<script type="text/javascript" src="bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
-
+		 <script src="./js/echarts.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	
@@ -78,6 +78,7 @@
 					<h1 class="page-header">スーパーカー</h1>
 	
 					<c:forEach items="${carList }" var="clist">
+					  <c:if test="${clist.status eq 'レンタル可能' }">
 						<c:if test="${clist.brandname eq 'スーパーカー' }">
 						<div class="col-md-2 col-sm-4 col-xs-6" style="text-align: center;height: 240px;">
 						
@@ -91,6 +92,7 @@
        				 		</a>
        				 	
 						</div>
+					 </c:if>	
 						</c:if>
 					</c:forEach>
 
@@ -100,6 +102,7 @@
 					<h1 class="page-header">ミニカー</h1>
 					
 					<c:forEach items="${carList }" var="clist">
+					 <c:if test="${clist.status eq 'レンタル可能' }">
 						<c:if test="${clist.brandname eq 'ミニカー' }">
 						<div class="col-md-2 col-sm-4 col-xs-6" style="text-align: center;height: 240px;">
 							
@@ -113,6 +116,7 @@
        				 		</a>
        				 		
 						</div>
+					 </c:if>	
 						</c:if>
 					
 					</c:forEach>
@@ -123,6 +127,7 @@
 					<h1 class="page-header">グリーン省エネ</h1>
 					
 					<c:forEach items="${carList }" var="clist">
+				   <c:if test="${clist.status eq 'レンタル可能' }">
 					<c:if test="${clist.brandname eq 'グリーン省エネ' }">	
 						<div class="col-md-2 col-sm-4 col-xs-6" style="text-align: center;height: 240px;">
 							<img src="../${clist.image }" class="img-thumbnail" style="max-width: 80%;"/>
@@ -135,6 +140,7 @@
        				 		</a>
 						</div>
 					</c:if>
+				 </c:if>	
 					</c:forEach>
 
 				</div>  					

@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>車追加</title>
     <script src="./component/js/JQuery2.1.4.js"></script>
     <link rel="stylesheet" href="./component/style/components.css">
     <script src="./component/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
                 <div class="inputbox">
                     <span class="title"><em class="s-red">*</em> ブランド</span>
                     <div class="inputright">
-                        <select id="example-select" name="brandname" class="form-control input-sm">
+                        <select id="example-select" name="brandname" class="form-control input-sm" value="aaa">
                             <option>スーパーカー</option>
                             <option>ミニカー</option>
                             <option>グリーン省エネ</option>
@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title">車名称</span>
+                    <span class="title">車番号</span>
                     <div class="inputright">
                         <input type="text" name="carno" class="form-control input-sm">
                     </div>
@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
                  <div class="inputbox">
                     <span class="title">価格</span>
                     <div class="inputright">
-                        <input type="number" name="price" class="form-control input-sm">
+                        <input type="number" name="price" class="form-control input-sm" min=0>
                     </div>
                 </div>
 

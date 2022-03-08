@@ -93,9 +93,10 @@ pageEncoding="UTF-8"%>
                         </dd>
                     </dl>
 
-
+				
 
                 </div>
+             
             </div>
             <div class="right">
                 <iframe src="controlpanel.jsp" frameborder="0" id="rightiframe" name="rightiframe"></iframe>
@@ -136,6 +137,8 @@ pageEncoding="UTF-8"%>
             $('.rightmask').removeClass('show');
         })
    </script>
+   
+  
 </body>
 
 </html>

@@ -18,4 +18,10 @@ public interface CarService {
 	Integer addCar(Car car);
 	
 	Integer deleteCarById(Integer carid);
+	
+	Integer updateCarOrderDisable(Car car);
+	
+	Integer updateCarOrderEnable(Car car);
+	
+	Integer updateCarPrice(String price,Car car);
 }

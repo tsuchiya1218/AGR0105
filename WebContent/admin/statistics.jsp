@@ -33,20 +33,20 @@ pageEncoding="UTF-8"%>
       
         
         <div class="barboxs">
-            <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
-            <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button>
+          <!--   <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
+            <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button> -->
 
             <div class="leftbox">
                 
                 <form action="searchcars" method="get">
          
                 <div class="liselect w300 ml10">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車番号で検索">
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
                 </form>
             </div>
@@ -63,7 +63,7 @@ pageEncoding="UTF-8"%>
              show: true
          },
          title : {
-             text: '顧客ごとレンタル数',
+             text: 'Top4顧客レンタル数',
              subtext: '顧客ごと予約集計グラフ',
              x:'center'
          },

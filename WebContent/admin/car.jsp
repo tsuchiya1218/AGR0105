@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
             <li class="active"><a href="#">システム</a></li>
             <li>車リスト</li>
         </ol>
-       	<c:if test="${isdeleted !=null}">
+       	<c:if test="${isdeleted ==true}">
        		<div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert"
                     aria-hidden="true">
@@ -35,13 +35,13 @@ pageEncoding="UTF-8"%>
             	削除しました。
         </div>
        	</c:if>
-       	<c:if test="${noneSearched !=null}">
+       	<c:if test="${isdeleted ==false}">
         <div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert"
                     aria-hidden="true">
                 &times;
             </button>
-            	該当する車名は見つかりません。
+            	該当する車がレンタル中なので、削除できませんでした。
         </div>
        	</c:if>
     
@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
         
         <div class="barboxs">
             <a href="car_create.jsp" style="text-decoration:none;color: black;"><button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="車追加"><i class="fa fa-plus-square"></i></button></a>
-            <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button>
+            
 
             <div class="leftbox">
                 
@@ -64,7 +64,7 @@ pageEncoding="UTF-8"%>
                 </div>  -->
                 <div class="liselect w300 ml10">
                     <div class="input-group">
-                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車名で検索">
+                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車番号で検索">
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
                         </span>
@@ -100,14 +100,15 @@ pageEncoding="UTF-8"%>
                         <td>${clist.color} </td>
                         <td>${clist.addtime }</td>
                         <td>${clist.status }</i></td>
-                        <td><img alt="dds" src="../${clist.image }" class="img-thumbnail" ></td>
+                        <td><img alt="dds" src="../${clist.image }" class="img-responsive img-thumbnail" height="500px"  width="500px" ></td>
                         <td>${clist.price }</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
                                     data-placement="top" title="" data-original-title="info"><i
                                         class="fa fa-info-circle"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
+                                <a href="car_update.jsp?carid=${clist.id }&carno=${clist.carno }&carprice=${clist.price }" class="btn btn-xs btn-success"　data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="料金更新"><i
                                         class="fa fa-pencil"></i></a>
                                 <a href="deleteCar?carid=${clist.id } " class="btn btn-xs btn-danger" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="削除" onclick="return confirm('${clist.carno}を削除してもよろしいですか？');"><i
@@ -120,15 +121,6 @@ pageEncoding="UTF-8"%>
             </table>
         </div>
 
-        <div class="fy">
-            <ul class="pagination">
-                <li><a href="javascript:void(0)">上一页</a></li>
-                <li><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)">2</a></li>
-                <li><a href="javascript:void(0)">3</a></li>
-                <li><a href="javascript:void(0)">下一页</a></li>
-            </ul>
-        </div>
     </div>
 
     <script>

@@ -49,8 +49,8 @@ pageEncoding="UTF-8"%>
       
         
         <div class="barboxs">
-            <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
-            <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button>
+           <!--  <button class="btn btn-warning pull-left " data-toggle="tooltip" title="" data-placement="right" data-original-title="下架图片"><i class="fa fa-level-down"></i></button>
+            <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除文档"><i class="fa fa-trash-o"></i></button> -->
 
             <div class="leftbox">
                 
@@ -63,12 +63,12 @@ pageEncoding="UTF-8"%>
                    </div>
                 </div>  -->
                 <div class="liselect w300 ml10">
-                    <div class="input-group">
+                 <!--    <div class="input-group">
                         <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車番号で検索">
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
                 </form>
             </div>
@@ -111,7 +111,7 @@ pageEncoding="UTF-8"%>
                                         class="fa fa-check"></i></a>
                                 </c:if>
                                 <c:if test="${olist.orderStatus eq 'レンタル中'}">
-                                <a href="backCar?orderid=${olist.id }" class="btn btn-xs btn-success" data-toggle="tooltip"
+                                <a href="backCar?orderid=${olist.id }&carid=${olist.carId }" class="btn btn-xs btn-success" data-toggle="tooltip"
                                 data-placement="top" title="返却" ><i
                                         class="fa fa-undo"></i></a>
                                 </c:if>
@@ -126,15 +126,7 @@ pageEncoding="UTF-8"%>
             </table>
         </div>
 
-        <div class="fy">
-            <ul class="pagination">
-                <li><a href="javascript:void(0)">上一页</a></li>
-                <li><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)">2</a></li>
-                <li><a href="javascript:void(0)">3</a></li>
-                <li><a href="javascript:void(0)">下一页</a></li>
-            </ul>
-        </div>
+    
     </div>
 
     <script>

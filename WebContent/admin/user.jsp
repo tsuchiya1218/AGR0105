@@ -24,9 +24,27 @@ pageEncoding="UTF-8"%>
             <li class="active"><a href="#">システム</a></li>
             <li>会員リスト</li>
         </ol>
+         <c:if test="${isdeleted ==true}">
+       		<div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            	削除しました。
+        </div>
+       	</c:if>
+       	   <c:if test="${isdeleted ==false}">
+       		<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            	レンタル利用中のユーザーは削除できませんでした。
+        </div>
+       	</c:if>
         <div class="barboxs">
 
-            <button 
+          <!--   <button 
                 class="btn btn-success pull-left " 
                 data-toggle="modal" data-target="#myModal"
                 title="" 
@@ -36,14 +54,14 @@ pageEncoding="UTF-8"%>
             </button>
 
             <button class="btn btn-danger pull-left ml10" data-toggle="tooltip" title="" data-placement="right" data-original-title="删除会员"><i class="fa fa-trash-o"></i></button>
-
+ -->
             <div class="leftbox">
               
 
                 <div class="liselect w300">
                 <form action="searchusers" method="get">
                     <div class="input-group">
-                        <input type="text" id="example-input-typeahead" name="search" class="form-control example-typeahead"　 placeholder="会員名で検索">
+                        <input type="text" id="example-input-typeahead" name="search" class="form-control example-typeahead"　 placeholder="ユーザー名で検索">
                  
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
@@ -93,8 +111,9 @@ pageEncoding="UTF-8"%>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-info"><i class="fa fa-globe"></i></a>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
                                         class="fa fa-pencil"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-danger"><i
-                                        class="fa fa-trash-o"></i></a>
+                                <a href="deleteuser?uid=${ulist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="削除" onclick="return confirm('${ulist.username}を削除してもよろしいですか？');"><i
+                                        class="fa fa-trash-o" ></i></a>
                             </div>
                         </td>
                     </tr>
@@ -104,15 +123,7 @@ pageEncoding="UTF-8"%>
             </table>
         </div>
 
-        <div class="fy">
-            <ul class="pagination">
-                <li><a href="javascript:void(0)">上一页</a></li>
-                <li><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)">2</a></li>
-                <li><a href="javascript:void(0)">3</a></li>
-                <li><a href="javascript:void(0)">下一页</a></li>
-            </ul>
-        </div>
+        
     </div>
 
     

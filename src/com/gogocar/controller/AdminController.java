@@ -2,7 +2,6 @@ package com.gogocar.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -94,6 +92,24 @@ public class AdminController {
 			return "admin/user";
 		}
 	}
+	
+	@RequestMapping(value = "/deleteuser",method = RequestMethod.GET)
+	public String deleteUser(HttpServletRequest request,Model model) {
+		
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		Integer result = userService.deleteUserByUID(uid);
+		
+		if (result>0) {
+			model.addAttribute("isdeleted", true);
+			return "forward:showusers";
+		}else {
+			model.addAttribute("isdeleted", false);
+			return "forward:showusers";
+		}
+		
+	}
+	
+	
 
 	@RequestMapping(value = "/showcars",method = RequestMethod.GET)
 	public String showCars(Model model) {
@@ -134,12 +150,35 @@ public class AdminController {
 		return "redirect:showcars";
 	}
 	
+	@RequestMapping(value = "/updateCarPrice",method = RequestMethod.POST)
+	 public String updateCarPrice(HttpServletRequest request) {
+		
+		String price =request.getParameter("price");
+		System.out.println(request.getParameter("carid"));
+		System.out.println(request.getParameter("price"));
+		Integer carid =Integer.parseInt(request.getParameter("carid"));
+		Car car =carService.getCarById(carid);
+		Integer result = carService.updateCarPrice(price, car);
+		return "redirect:showcars";	
+		
+	}
+	
 	
 	@RequestMapping(value = "/deleteCar",method = RequestMethod.GET)
 	public String deleteCar(Integer carid,Model model) {
-		model.addAttribute("isdeleted", true);
-		carService.deleteCarById(carid);
-		return "forward:showcars";
+		
+		
+		Integer result = carService.deleteCarById(carid);
+		
+		if (result>0) {
+			model.addAttribute("isdeleted", true);
+			return "forward:showcars";
+		}else {
+			model.addAttribute("isdeleted", false);
+			return "forward:showcars";
+		}
+		
+		
 	}
 	
 	@RequestMapping(value = "/showorders")
@@ -187,8 +226,10 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/backCar",method = RequestMethod.GET)
-	public String backCar(Integer orderid,Model model) {
+	public String backCar(Integer orderid,Integer carid,Model model) {
 		Integer isbacked = orderService.backOrder(orderid);
+		Car car = carService.getCarById(carid);
+		carService.updateCarOrderEnable(car);
 		if (isbacked!=-1) {
 			model.addAttribute("isbacked",true);
 			return "forward:showorders";

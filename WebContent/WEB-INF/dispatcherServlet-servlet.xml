@@ -35,6 +35,7 @@
 			<mvc:exclude-mapping path="/user/bootstrap-3.4.1-dist/js/bootstrap.min.js"/>
 			<mvc:exclude-mapping path="/user/login"/>
 			<mvc:exclude-mapping path="/user/doindex"/>
+			<mvc:exclude-mapping path="/user/regist"/>
 			<bean class="com.gogocar.interceptor.UserLoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

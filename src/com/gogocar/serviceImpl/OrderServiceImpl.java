@@ -46,10 +46,10 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Integer createOrder(Carorder order) {
 		// TODO Auto-generated method stub
-		if (orderMapper.selectByCarId(order.getCarId())==null) {
+		//if (orderMapper.selectByCarId(order.getCarId())==null) {
 			return orderMapper.insert(order);
-		}
-		return -1;
+		//}
+		//return -1;
 	}
 
 	@Override

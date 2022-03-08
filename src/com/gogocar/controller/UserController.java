@@ -18,6 +18,7 @@ import com.gogocar.bean.User;
 import com.gogocar.service.CarService;
 import com.gogocar.service.OrderService;
 import com.gogocar.service.UserService;
+import com.gogocar.utils.ConvertDateToString;
 
 @RequestMapping("/user")
 @Controller
@@ -41,6 +42,22 @@ public class UserController {
 		 * 
 		 * }
 		 */
+	 
+	 @RequestMapping(value = "/regist",method=RequestMethod.POST)
+	 public String regist(HttpServletRequest request,Model model) {
+		 User user = new User(null, (String)request.getParameter("username"),(String) request.getParameter("password"), (String)request.getParameter("driverlicense"), (String)request.getParameter("birthDate"), (String)request.getParameter("phoneNumber"),(String) request.getParameter("email"), (String)request.getParameter("address"), ConvertDateToString.NowDateToStr(), 0, (String)request.getParameter("emeg"), (String)request.getParameter("emegtel"),(String)request.getParameter("licenseexpiredate"));
+		 if(userService.regist(user)==1) {
+			 System.out.println(user);
+			 model.addAttribute("isregisted", true);
+			 return "user/userLogin";
+		 }else {
+			 model.addAttribute("isregisted", false);
+			 return "user/register";
+		 }
+	 }
+	 
+	 
+	 
 	
 	 @RequestMapping(value = "doindex")
 	 public String doIndex(HttpServletRequest request,Model model) {
@@ -90,6 +107,49 @@ public class UserController {
 		}
 		return "user/userLogin";
 	}
+	
+	@RequestMapping(value = "/changePWD",method = RequestMethod.GET)
+	public String changePWD(HttpSession session,HttpServletRequest request,Model model) {
+		User user = (User)session.getAttribute("user");
+		String oldpassword = request.getParameter("oldpassword");
+		String password = request.getParameter("password");
+	
+		if (!user.getPassword().equals(oldpassword)) {
+			System.out.println("passwordfailed");
+			model.addAttribute("ischanged", false);
+			return "user/changePWD";
+		}else {
+			model.addAttribute("ischanged", true);
+			user.setPassword(password);
+			userService.changePWD(user);
+			session.invalidate();
+			System.out.println("password changed");
+			return "user/userLogin";
+		}
+		
+	}
+	
+	@RequestMapping(value = "/changeInfo",method = RequestMethod.GET)
+	public String changeInfo(HttpSession session,HttpServletRequest request,Model model) {
+		User user = (User)session.getAttribute("user");
+		String username = request.getParameter("username");
+		if (user.getUsername().equals(username)) {
+			user.setDrivelicense((String)request.getParameter("driverlicense"));
+			user.setExpiredate((String)request.getParameter("licenseexpiredate"));
+			user.setEmail((String)request.getParameter("email"));
+			user.setBirthday((String)request.getParameter("birthDate"));
+			user.setTel((String)request.getParameter("phoneNumber"));
+			user.setAddress((String)request.getParameter("address"));
+			user.setEmegname((String)request.getParameter("emeg"));
+			user.setEmegtel((String)request.getParameter("emegtel"));
+			userService.changeInfo(user);
+			model.addAttribute("isupdated", true);
+			return "forward:userinfo";
+		}
+		model.addAttribute("isupdated", false);
+		return "forward:userinfo";
+	}
+	
 	
 	@RequestMapping(value = "/orderhistory",method = RequestMethod.GET)
 	public String orderHistory(Integer userid,Model model) {

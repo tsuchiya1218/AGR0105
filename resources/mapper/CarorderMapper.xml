@@ -37,7 +37,7 @@
     from carorder
     where id = #{id,jdbcType=INTEGER}
   </select>
-   <select id="selectByCarId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   <select id="selectByCarId" parameterType="java.lang.Integer" resultType="map">
     select id, user_id, car_id, order_price, start_time, end_time, order_status
     from carorder
     where car_id = #{carId,jdbcType=INTEGER}
@@ -45,6 +45,11 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, user_id, car_id, order_price, start_time, end_time, order_status
     from carorder
+  </select>
+  <select id="selectAllOrders" resultType="map">
+    select carorder.id, user_id, car_id, carorder.order_price, carorder.start_time, carorder.end_time, carorder.order_status,user.username,car.carNo
+    from carorder,user,car 
+    where user_id=user.id and car_id=car.id
   </select>
    <select id="selectByUserId" parameterType="java.lang.Integer" resultType="map">
    select carorder.id, user.id,car.id,car.carNo, carorder.order_price, carorder.start_time, carorder.end_time, carorder.order_status
@@ -56,5 +61,5 @@
     from carorder
      where user_id  IN (SELECT id from user) GROUP BY user_id;
   </select>
-  
+ 
 </mapper>

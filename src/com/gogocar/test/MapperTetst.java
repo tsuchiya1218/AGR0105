@@ -20,6 +20,7 @@ import com.gogocar.dao.AdminMapper;
 import com.gogocar.dao.CarMapper;
 import com.gogocar.dao.OrderMapper;
 import com.gogocar.dao.UserMapper;
+import com.gogocar.service.UserService;
 import com.gogocar.utils.ConvertDateToString;
 import com.gogocar.utils.mailUtils;
 
@@ -40,6 +41,9 @@ public class MapperTetst {
 
 	@Autowired
 	CarMapper carMapper;
+	
+	@Autowired
+	UserService UserService;
 
 
 	@Test
@@ -58,13 +62,25 @@ public class MapperTetst {
 	@Test
 	public void  strUtils(){
 		
-		String str = ConvertDateToString.NowDateToStr();
+		String str = ConvertDateToString.dateConvertion("1999/2/2");
 		System.out.println(str);
 	}
 	
 	@Test
 	public void  carTest(){
-		List<Map<String, Object>> userId = orderMapper.selectcountByUserId();
-		System.out.println(userId);
+		/*
+		 * List<Map<String, Object>> userId = orderMapper.selectcountByUserId();
+		 * System.out.println(userId);
+		 */
+		/*
+		 * List<Map<String, Object>> list = orderMapper.selectByUserId(1);
+		 * System.out.println(list.isEmpty());
+		 */
+		/*
+		 * List<Map<String, Object>> list = orderMapper.selectByCarId(46);
+		 * System.out.println(list);
+		 */
+		Integer deleteUserByUID = UserService.deleteUserByUID(2);
+		System.out.println(deleteUserByUID);
 	}
 }

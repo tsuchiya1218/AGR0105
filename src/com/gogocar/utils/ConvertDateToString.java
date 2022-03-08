@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class ConvertDateToString {
 	
@@ -27,6 +28,20 @@ public class ConvertDateToString {
 		}
 		return diff;
 	}
+	
+	public static String dateConvertion(String str) {
+        Date parse = null;
+        String dateString = "";
+        try {
+            parse = new SimpleDateFormat("yyyy/MM/dd").parse(str);
+            dateString = new SimpleDateFormat("yyyy-MM-dd").format(parse);
+        } catch (ParseException e) {
+            dateString=null;
+        }
+        
+        return dateString;
+    }
+
 
 	
 }

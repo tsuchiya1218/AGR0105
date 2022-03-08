@@ -13,4 +13,10 @@ public interface UserService {
 	Integer regist(User user);
 	
 	User getUserByUID(Integer id);
+	
+	Integer deleteUserByUID(Integer id);
+	
+	Integer changePWD(User user);
+	
+	Integer changeInfo(User user);
 }

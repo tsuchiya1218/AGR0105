@@ -11,7 +11,7 @@ public interface OrderMapper {
 
     Carorder selectByPrimaryKey(Integer id);
     
-    Carorder selectByCarId(Integer carid);
+    List<Map<String, Object>> selectByCarId(Integer carid);
 
     List<Carorder> selectAll();
 
@@ -19,4 +19,6 @@ public interface OrderMapper {
     
     List<Map<String, Object>> selectByUserId(Integer userid);
     List<Map<String, Object>> selectcountByUserId();
+    
+    List<Map<String, Object>> selectAllOrders();
 }

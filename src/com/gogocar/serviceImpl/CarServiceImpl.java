@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gogocar.bean.Car;
 import com.gogocar.dao.CarMapper;
+import com.gogocar.dao.OrderMapper;
 import com.gogocar.service.CarService;
 
 @Service
@@ -15,6 +16,9 @@ public class CarServiceImpl implements CarService{
 
 	@Autowired
 	CarMapper carMapper;
+	
+	@Autowired
+	OrderMapper orderMapper;
 
 	@Override
 	public List<Car> getAllCar() {
@@ -49,9 +53,13 @@ public class CarServiceImpl implements CarService{
 
 	@Override
 	public Integer deleteCarById(Integer carid) {
+		
+		Car car = carMapper.selectByPrimaryKey(carid);
 		// TODO Auto-generated method stub
-		if (carMapper.selectByPrimaryKey(carid)!=null) {
+		if (car!=null&&car.getStatus().equals("レンタル可能")) {
+		
 			return carMapper.deleteByPrimaryKey(carid);
+
 		}
 		
 		return -1;
@@ -63,6 +71,36 @@ public class CarServiceImpl implements CarService{
 			return carMapper.selectByPrimaryKey(carid);
 		}
 		return null;
+	}
+
+	@Override
+	public Integer updateCarOrderDisable(Car car) {
+		
+		if (carMapper.selectByCarName(car.getCarno())!=null) {
+			car.setStatus("レンタル不可");
+			return carMapper.updateByPrimaryKey(car);
+		}
+		return -1;
+	}
+	
+	@Override
+	public Integer updateCarOrderEnable(Car car) {
+		
+		if (carMapper.selectByCarName(car.getCarno())!=null) {
+			car.setStatus("レンタル可能");
+			return carMapper.updateByPrimaryKey(car);
+		}
+		return -1;
+	}
+
+	@Override
+	public Integer updateCarPrice(String price,Car car) {
+		if(carMapper.selectByPrimaryKey(car.getId())!=null) {
+			car.setPrice(price);
+			return carMapper.updateByPrimaryKey(car);		
+			}
+		
+		return -1;
 	}
 	
 	
