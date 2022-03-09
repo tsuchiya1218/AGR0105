@@ -27,5 +27,7 @@ public interface OrderService {
 	Integer backOrder(Integer orderid);
 	
 	List<Map<String, Object>> selectCountOrder();
-
+	List<Map<String, Object>> selectBrandCount();
+	
+	List<Map<String, Object>> selectorderdate(Integer carid);
 }

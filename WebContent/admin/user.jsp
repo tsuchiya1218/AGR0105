@@ -107,10 +107,7 @@ pageEncoding="UTF-8"%>
                         <td>${ulist.emegtel }</td>
                         <td>${ulist.regdate }</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <a href="javascript:void(0)" class="btn btn-xs btn-info"><i class="fa fa-globe"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-xs btn-success"><i
-                                        class="fa fa-pencil"></i></a>
+                            <div class="btn-group">                                
                                 <a href="deleteuser?uid=${ulist.id }" class="btn btn-xs btn-danger" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="削除" onclick="return confirm('${ulist.username}を削除してもよろしいですか？');"><i
                                         class="fa fa-trash-o" ></i></a>

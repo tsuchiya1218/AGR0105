@@ -64,9 +64,23 @@ pageEncoding="UTF-8"%>
                 </div>  -->
                 <div class="liselect w300 ml10">
                     <div class="input-group">
-                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車番号で検索">
+                        <input type="text" id="example-input-typeahead" class="form-control example-typeahead" name="search" placeholder="車名で検索">
                         <span class="input-group-btn">
                             <button class="btn btn-success"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+                </form>
+                <form action="searchcarsbyBrand" method="get">
+                <div class="liselect w300 ml10">
+                    <div class="input-group">
+                        <select id="example-select" name="brandname" class="form-control input-sm" >
+                            <option>スーパーカー</option>
+                            <option>ミニカー</option>
+                            <option>グリーン省エネ</option>
+                        </select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success"><i class="fa fa-bars"></i></button>
                         </span>
                     </div>
                 </div>
@@ -79,7 +93,7 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <th width="50"  class="text-center"><input type="checkbox" id="check5-all" name="check5-all"></th>
                         <th class="text-center">ID</th>
-                        <th>車番号</th>
+                        <th>車名</th>
                         <th>ブランド</th>
                         <th>色</th>
                         <th>追加日時</th>
@@ -104,9 +118,6 @@ pageEncoding="UTF-8"%>
                         <td>${clist.price }</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
-                                    data-placement="top" title="" data-original-title="info"><i
-                                        class="fa fa-info-circle"></i></a>
                                 <a href="car_update.jsp?carid=${clist.id }&carno=${clist.carno }&carprice=${clist.price }" class="btn btn-xs btn-success"　data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="料金更新"><i
                                         class="fa fa-pencil"></i></a>

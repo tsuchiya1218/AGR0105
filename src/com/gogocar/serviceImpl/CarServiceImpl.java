@@ -40,6 +40,17 @@ public class CarServiceImpl implements CarService{
 		}
 		return emptyList;
 	}
+	
+	@Override
+	public List<Car> getSearchedCarBrands(String brandName) {
+		List<Car> searchedCarBrandList = carMapper.selectByCarBrand(brandName);
+		List<Car> emptyBrandList = new ArrayList<Car>();
+		
+		if (!searchedCarBrandList.isEmpty()) {
+				return searchedCarBrandList;
+		}
+		return emptyBrandList;
+	}
 
 	@Override
 	public Integer addCar(Car car) {
@@ -94,14 +105,17 @@ public class CarServiceImpl implements CarService{
 	}
 
 	@Override
-	public Integer updateCarPrice(String price,Car car) {
+	public Integer updateCarPrice(String price,String carstatus,Car car) {
 		if(carMapper.selectByPrimaryKey(car.getId())!=null) {
 			car.setPrice(price);
+			car.setStatus(carstatus);
 			return carMapper.updateByPrimaryKey(car);		
 			}
 		
 		return -1;
 	}
+
+	
 	
 	
 	

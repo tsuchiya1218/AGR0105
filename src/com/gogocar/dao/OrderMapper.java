@@ -21,4 +21,6 @@ public interface OrderMapper {
     List<Map<String, Object>> selectcountByUserId();
     
     List<Map<String, Object>> selectAllOrders();
+    List<Map<String, Object>> selectorderdate(Integer carid);
+    List<Map<String, Object>> selectcountByCarBrand();
 }

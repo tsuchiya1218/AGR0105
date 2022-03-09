@@ -53,10 +53,11 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="tablebox">
            <div id="main" style="width: 600px;height:400px;"></div>
+           <div id="main2" style="width: 600px;height:400px;"></div>
 	 <script type="text/javascript">
   
       var myChart = echarts.init(document.getElementById('main'));
-
+	  var myChart2= echarts.init(document.getElementById('main2'));
       
      myChart.setOption({
  		 aria: {
@@ -108,7 +109,7 @@ pageEncoding="UTF-8"%>
 	      dataType:"JSON",
 	      success:function(data){
 	    	  if(data){
-	    		  alert("success");
+	    		
 	    		 
 	    		  for(var key in data){
 	    			 
@@ -139,9 +140,92 @@ pageEncoding="UTF-8"%>
 	      
 		})
 
-
+	//-------------------
+	
+	 myChart2.setOption({
+ 		 aria: {
+             show: true
+         },
+         title : {
+             text: 'ブランドごとレンタル数',
+             subtext: 'ブランドごと予約集計グラフ',
+             x:'center'
+         },
+         tooltip : {
+             trigger: 'item',
+             formatter: "{a} <br/>{b} : {c} ({d}%)"
+         },
+         legend: {
+             orient: 'vertical',
+             left: 'left',
+             
+         },
+         series : [
+             {
+                 name: 'ブランド/レンタル数',
+                 type: 'pie',
+                 radius : '55%',
+                 center: ['50%', '60%'],
+                 data:[
+                     
+                      
+                 ],
+                 itemStyle: {
+                     emphasis: {
+                         shadowBlur: 10,
+                         shadowOffsetX: 0,
+                         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                     }
+                 }
+             }
+         ]
+     
+ 	  });
+      
+  	var bnums=[];
+	var brands=[];
+  $.ajax({
+	  url:"http://localhost:8080/GoGoCar/admin/drawbrand",
+	  cache: false, 
+      data: "time="+new Date().getTime(),
+      async: false, 
+      dataType:"JSON",
+      success:function(data){
+    	  if(data){
+    		
+    		 
+    		  for(var key in data){
+    			 
+    			  brands.push(key);
+    			  bnums.push(data[key]);
+    		  }
+    		  myChart2.setOption({
+    			  series : [
+    		             {
+    		                 data:[
+    		                     {value:bnums[0], name:brands[0]} , 
+    		                     {value:bnums[1], name:brands[1]},
+    		                     {value:bnums[2], name:brands[2]},
+    		                     {value:bnums[3], name:brands[3]}, 
+    		                 ]	    		            	
+    		             }
+    		         ]
+	          });
+    	  }
+    	   
+    	 
+      },
+      error : function(errorMsg) {
+         
+            alert("failed");
+            myChart2.hideLoading();
+        }
+      
+	})
+	
   
       myChart.setOption(option);
+  	myChart2.setOption(option);
     </script>
         </div>
 

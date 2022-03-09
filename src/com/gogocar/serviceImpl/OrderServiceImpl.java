@@ -103,5 +103,17 @@ public class OrderServiceImpl implements OrderService{
 		return orderMapper.selectcountByUserId();
 	}
 
+	@Override
+	public List<Map<String, Object>> selectorderdate(Integer carid) {
+		// TODO Auto-generated method stub
+		return orderMapper.selectorderdate(carid);
+	}
+
+	
+	@Override
+	public List<Map<String, Object>> selectBrandCount() {
+		// TODO Auto-generated method stub
+		return orderMapper.selectcountByCarBrand();
+	}
 
 }

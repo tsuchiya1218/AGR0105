@@ -12,6 +12,8 @@ public interface CarMapper {
     Car selectByPrimaryKey(Integer id);
     
     Car selectByCarName(String carName);
+    
+    List<Car> selectByCarBrand(String carBrand);
 
     List<Car> selectAll();
     

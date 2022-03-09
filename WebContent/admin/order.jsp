@@ -101,10 +101,7 @@ pageEncoding="UTF-8"%>
                         <td>${olist.endTime }</i></td>
                         <td>${olist.orderStatus }</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <a href="javascript:void(0)" class="btn btn-xs btn-info" data-toggle="tooltip"
-                                    data-placement="top" title="" data-original-title="info"><i
-                                        class="fa fa-info-circle"></i></a>
+                            <div class="btn-group">                                
                               	<c:if test="${olist.orderStatus eq 'レンタル審査'}">  
                                 <a href="approveOrder?orderid=${olist.id }" class="btn btn-xs btn-success" data-toggle="tooltip"
                                 data-placement="top" title="" data-original-title="許可"><i

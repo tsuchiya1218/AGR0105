@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gogocar.bean.Admin;
 import com.gogocar.bean.Car;
@@ -136,6 +137,22 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(value="/searchcarsbyBrand",method=RequestMethod.GET)
+	public String searchCarsByBrand(HttpServletRequest request, Model model) {
+		List<Car> brandCars = carService.getSearchedCarBrands(request.getParameter("brandname"));
+		System.out.println(brandCars);
+		System.out.println(request.getParameter("brandname"));
+		if (!brandCars.isEmpty()) {
+			model.addAttribute("carList",brandCars);
+			return "admin/car";
+		}else {
+			model.addAttribute("noneSearched",true);
+			return "admin/car";
+		}
+		
+		
+	}
+	
 	@RequestMapping(value = "/addcar",method = RequestMethod.POST)
 	public String addCar(HttpServletRequest request,MultipartFile image) throws Exception {
 		String name = UUID.randomUUID().toString().replaceAll("-","");
@@ -154,11 +171,10 @@ public class AdminController {
 	 public String updateCarPrice(HttpServletRequest request) {
 		
 		String price =request.getParameter("price");
-		System.out.println(request.getParameter("carid"));
-		System.out.println(request.getParameter("price"));
+		String carstatus=request.getParameter("carstatus");
 		Integer carid =Integer.parseInt(request.getParameter("carid"));
 		Car car =carService.getCarById(carid);
-		Integer result = carService.updateCarPrice(price, car);
+		Integer result = carService.updateCarPrice(price,carstatus,car);
 		return "redirect:showcars";	
 		
 	}
@@ -262,7 +278,22 @@ public class AdminController {
 
 		String mapstr = new ObjectMapper().writeValueAsString(map);
 		response.getWriter().print(mapstr);
+	
+	}
+	
+	@RequestMapping(value = "/drawbrand")
+	public void drawBrand(HttpServletResponse response) throws IOException {
+		Map<String, Long> map2 = new HashMap<String, Long>();
+		List<Map<String, Object>> brandList = orderService.selectBrandCount();
 		
+		for(Map brandmap:brandList) {
+			Long brandCount=(Long)brandmap.get("brand_count");
+			map2.put((String)brandmap.get("brandname"),brandCount);
+		}
+		System.out.println(map2);
+		
+		String mapstr1 = new ObjectMapper().writeValueAsString(map2);
+		response.getWriter().print(mapstr1);
 	}
 	
 	

@@ -1,10 +1,13 @@
 package com.gogocar.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gogocar.bean.Car;
 import com.gogocar.bean.User;
 import com.gogocar.service.CarService;
@@ -134,10 +138,10 @@ public class UserController {
 		User user = (User)session.getAttribute("user");
 		String username = request.getParameter("username");
 		if (user.getUsername().equals(username)) {
-			user.setDrivelicense((String)request.getParameter("driverlicense"));
+			/* user.setDrivelicense((String)request.getParameter("driverlicense")); */
 			user.setExpiredate((String)request.getParameter("licenseexpiredate"));
 			user.setEmail((String)request.getParameter("email"));
-			user.setBirthday((String)request.getParameter("birthDate"));
+			/* user.setBirthday((String)request.getParameter("birthDate")); */
 			user.setTel((String)request.getParameter("phoneNumber"));
 			user.setAddress((String)request.getParameter("address"));
 			user.setEmegname((String)request.getParameter("emeg"));
@@ -164,6 +168,43 @@ public class UserController {
 			return "user/orderdetails";
 		}
 		
+	}
+	
+	@RequestMapping(value = "/setDate")
+	public void setDate(HttpServletResponse response,Integer carid) throws IOException {
+		
+		
+		/* Map<String, Long> map = new HashMap<String, Long>(); */
+		/*
+		 * List<Map<String, Object>> UordersList = orderService.selectCountOrder();
+		 * for(Map UoderMap:UordersList) { Integer uid
+		 * =(Integer)UoderMap.get("user_id"); User user = userService.getUserByUID(uid);
+		 * Long orderCount=(Long)UoderMap.get("order_count");
+		 * map.put(user.getUsername(), orderCount); } System.out.println(map);
+		 */
+		
+		ArrayList<String> dateList = new ArrayList<String>();
+		List<Map<String, Object>> selectorderdateList = orderService.selectorderdate(carid);
+		for(Map map:selectorderdateList) {
+			  String starttime =(String) map.get("start_time");
+			  String endtime =(String) map.get("end_time");
+			  List<String> list1 = ConvertDateToString.getBetweenDate(starttime,endtime);
+			  dateList.addAll(list1);
+		}
+		/*
+		 * dateList.add("2022-3-09"); dateList.add("2022-3-11");
+		 * dateList.add("2022-3-12");
+		 */
+		 
+		
+		/*
+		 * map.put("user1", 5); map.put("user2", 7); map.put("user3", 3);
+		 * map.put("user4", 1);
+		 */
+
+		String mapstr = new ObjectMapper().writeValueAsString(dateList);
+		response.getWriter().print(mapstr);
+	
 	}
 	
 

@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- ///// -->
                 <div class="inputbox">
-                    <span class="title">車番号</span>
+                    <span class="title">車名</span>
                     <div class="inputright">
                         <input type="text" name="carno" class="form-control input-sm">
                     </div>

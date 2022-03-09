@@ -48,6 +48,11 @@
     from car
     where carno = #{carno,jdbcType=INTEGER}
   </select>
+    <select id="selectByCarBrand" parameterType="string" resultMap="BaseResultMap">
+    select id, carNo, brandname, image, color, addtime, status, price, info
+    from car
+    where brandname = #{brandname,jdbcType=VARCHAR}
+  </select>
    <select id="selectCarsByName" parameterType="string" resultMap="BaseResultMap">
     select id, carNo, brandname, image, color, addtime, status, price, info
     from car

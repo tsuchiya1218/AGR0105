@@ -20,6 +20,7 @@ import com.gogocar.dao.AdminMapper;
 import com.gogocar.dao.CarMapper;
 import com.gogocar.dao.OrderMapper;
 import com.gogocar.dao.UserMapper;
+import com.gogocar.service.CarService;
 import com.gogocar.service.UserService;
 import com.gogocar.utils.ConvertDateToString;
 import com.gogocar.utils.mailUtils;
@@ -44,6 +45,9 @@ public class MapperTetst {
 	
 	@Autowired
 	UserService UserService;
+	
+	@Autowired
+	CarService carService;
 
 
 	@Test
@@ -80,7 +84,33 @@ public class MapperTetst {
 		 * List<Map<String, Object>> list = orderMapper.selectByCarId(46);
 		 * System.out.println(list);
 		 */
-		Integer deleteUserByUID = UserService.deleteUserByUID(2);
-		System.out.println(deleteUserByUID);
+/*		Integer deleteUserByUID = UserService.deleteUserByUID(2);
+		System.out.println(deleteUserByUID);*/
+		
+		
+		/*
+		 * List<Map<String, Object>> list = orderMapper.selectorderdate(45);
+		 * System.out.println(list); ArrayList<String> truelist = new
+		 * ArrayList<String>(); for(Map map:list) { String starttime =(String)
+		 * map.get("start_time"); String endtime =(String) map.get("end_time");
+		 * List<String> list1 = ConvertDateToString.getBetweenDate(starttime,endtime);
+		 * truelist.addAll(list1);
+		 * 
+		 * } System.out.println(truelist);
+		 */
+		
+		/*
+		 * List<Map<String, Object>> userlist = orderMapper.selectcountByUserId();
+		 * System.out.println(userlist); List<Map<String, Object>> list =
+		 * orderMapper.selectcountByCarBrand(); System.out.println(list);
+		 */
+			/*
+			 * List<String> betweenDate = ConvertDateToString.getBetweenDate("2022-03-09",
+			 * "2022-03-15"); System.out.println(betweenDate);
+			 */
+	
+		 List<Car> selectByCarBrand = carMapper.selectByCarBrand("スーパーカー");
+		System.out.println(selectByCarBrand);
+		
 	}
 }

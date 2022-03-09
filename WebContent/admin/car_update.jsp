@@ -39,12 +39,12 @@ pageEncoding="UTF-8"%>
     <div id="body">
         <ol class="breadcrumb">
             <li class="active"><a href="#">システム</a></li>
-            <li>料金変更</li>
+            <li>料金/状态变更</li>
         </ol>
 
 
         <div class="tabli">
-            <span>料金入力</span>
+            <span>料金/状態更新</span>
         </div>
 
         <div class="tabbody">
@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
                         <input type="hidden" name="carid"  id="carid" class="form-control input-sm" value="${param.carid }">
                    
                
-                <!-- ///// -->
+                
                 <div class="inputbox">
                     <span class="title">車名称</span>
                     <div class="inputright">
@@ -70,6 +70,16 @@ pageEncoding="UTF-8"%>
                         <input type="number" name="price" class="form-control input-sm" min=0 value="${param.carprice }">
                     </div>
                 </div>
+                
+                 <div class="inputbox">
+                    <span class="title"><em class="s-red">*</em> レンタル状態</span>
+                    <div class="inputright">
+                        <select id="example-select" name="carstatus" class="form-control input-sm">
+                            <option>レンタル可能</option>
+                            <option>レンタル不可</option>
+                        </select>
+                    </div>
+                </div>
 
            
 
@@ -79,7 +89,7 @@ pageEncoding="UTF-8"%>
             
         </div>
         <div class="tbfooter">
-            <button class="btn btn-success"><i class="fa fa-floppy-o"></i>料金更新</button>
+            <button class="btn btn-success"><i class="fa fa-floppy-o"></i>料金/状態更新</button>
         </div>
         </form>
     </div>

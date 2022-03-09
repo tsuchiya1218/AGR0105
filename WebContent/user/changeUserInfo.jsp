@@ -117,7 +117,7 @@ $().ready(function() {
                 <div class="form-group">
                     <label for="driverlicense" class="col-sm-3 control-label">免許番号<span style="color:red;">※必須</span></label>
                     <div class="col-sm-9">
-                        <input type="text" id="driverlicense" name="driverlicense" placeholder="driverlicense" class="form-control" value="${param.drivelicense }" autofocus>
+                        <input type="text" id="driverlicense" name="driverlicense" placeholder="driverlicense" class="form-control" value="${param.drivelicense }"  readonly="readonly" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -133,12 +133,12 @@ $().ready(function() {
                     </div>
                 </div>
                
-                <div class="form-group">
+               <%--   <div class="form-group">
                     <label for="birthDate" class="col-sm-3 control-label">生年月日 <span style="color:red;">※必須</span></label>
                     <div class="col-sm-9">
-                        <input type="date" id="birthDate" name="birthDate" class="form-control" value="${param.birthday }">
+                        <input type="date" id="birthDate" name="birthDate" class="form-control" value="${param.birthday } " >
                     </div>
-                </div>
+                </div>  --%>
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-3 control-label">電話番号  <span style="color:red;">※必須</span></label>
                     <div class="col-sm-9">

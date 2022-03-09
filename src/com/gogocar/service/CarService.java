@@ -13,6 +13,8 @@ public interface CarService {
 	
 	List<Car>	getSearchedCars(String searchName);
 	
+	List<Car> getSearchedCarBrands(String brandName);
+	
 	Car getCarById(Integer carid);
 	
 	Integer addCar(Car car);
@@ -23,5 +25,5 @@ public interface CarService {
 	
 	Integer updateCarOrderEnable(Car car);
 	
-	Integer updateCarPrice(String price,Car car);
+	Integer updateCarPrice(String price,String carstatus,Car car);
 }

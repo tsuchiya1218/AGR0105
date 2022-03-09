@@ -52,6 +52,7 @@
 	     			 <td rowspan="8" style="vertical-align: middle !important;text-align: center;">
 		     			 <p style="font-size:18px; font-weight:bold;">ご予約ありがとうございます</p>
 		     			 <p>この度は、GoGoCarにご予約頂き誠にありがとうございます。<br>
+		     			 	予約メールを送信しました、ご確認お願い致します。<br>
 								スタッフ一同、当日のご来店を心よりお待ちしております。</p><br>
 						　<p style="font-size:18px; font-weight:bold;">ご予約内容の確認</p>
 						<p><img src="../img/guide1.jpeg" class="img-responsive img-thumbnail"></p>	

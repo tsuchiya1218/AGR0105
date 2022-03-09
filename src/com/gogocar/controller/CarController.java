@@ -52,7 +52,7 @@ public class CarController {
 	
 		Carorder order = new Carorder(null, Integer.parseInt(request.getParameter("userinfo")), car.getId(),price.toString(), date[0], date[1], "レンタル審査");		
 		orderService.createOrder(order);
-		carService.updateCarOrderDisable(car);
+		//carService.updateCarOrderDisable(car);
 		
 		return "user/thanks";
 	}
